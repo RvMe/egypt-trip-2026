@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>开罗 · 达哈卜 2026</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&family=ZCOOL+KuaiLe&display=swap">
+<style>
+/* Layout: one narrow reading column; countdown strip, sketch map, day timeline, checklist, costs, open questions */
+:root{
+  --bg:#eef3f1; --paper:#f8fbfa; --ink:#12302f; --muted:#5b716f; --line:#cddbd8;
+  --sea:#2a9d9a; --sea-soft:#bfe3df; --sand:#c98a2e; --sand-soft:#f1dfbf; --land:#efe6d3;
+  --coral:#d9573f; --ok:#2f8a57; --chip:#e2ece9;
+  --f-display:"Bricolage Grotesque","Noto Sans SC",system-ui,sans-serif;
+  --f-body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --f-hand:"ZCOOL KuaiLe","Noto Sans SC",cursive;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0b1a1c; --paper:#10252a; --ink:#e3eeec; --muted:#93aaa7; --line:#21403f;
+  --sea:#4cc3bd; --sea-soft:#163f45; --sand:#e0a64e; --sand-soft:#3a2e1b; --land:#1b2b28;
+  --coral:#f07a62; --ok:#5cc28a; --chip:#183538; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b1a1c; --paper:#10252a; --ink:#e3eeec; --muted:#93aaa7; --line:#21403f;
+  --sea:#4cc3bd; --sea-soft:#163f45; --sand:#e0a64e; --sand-soft:#3a2e1b; --land:#1b2b28;
+  --coral:#f07a62; --ok:#5cc28a; --chip:#183538; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding-block:20px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
+a{color:var(--sea)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--sand);outline-offset:2px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.2}
+h2{font-size:1.25rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+h2 small{font-family:var(--f-body);font-weight:400;font-size:.8rem;color:var(--muted)}
+header{display:grid;gap:6px}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+h1{font-size:clamp(1.9rem,6vw,2.7rem);font-weight:800;letter-spacing:-.01em}
+h1 .dot{color:var(--sand)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:.85rem}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:2px 10px;background:var(--chip);font-size:.78rem;color:var(--ink)}
+.pill.draft{background:var(--sand-soft)}
+.now{background:var(--ink);color:var(--bg);border-radius:14px;padding:16px 18px;display:grid;gap:4px}
+.now .lbl{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;opacity:.7;text-transform:uppercase}
+.now .what{font-size:1.05rem;font-weight:500}
+.now .clock{font-family:var(--f-mono);font-size:clamp(1.6rem,7vw,2.3rem);font-weight:700;color:var(--sea-soft)}
+.now .sub{font-size:.8rem;opacity:.75}
+.map{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:10px;display:grid;gap:8px}
+.map svg{width:100%;height:auto;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--muted);padding:0 6px 4px}
+.legend b{color:var(--ink);font-weight:500}
+.legend i{display:inline-block;width:18px;height:0;border-top:2px dashed var(--sand);vertical-align:middle;margin-right:4px}
+.legend i.road{border-top:2.5px solid var(--coral)}
+.legend i.trip{border-top:2px dotted var(--sea)}
+.days{display:grid;gap:14px}
+.day{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:10px}
+.day.today{border-color:var(--sea);box-shadow:0 0 0 2px var(--sea-soft)}
+.day.past{opacity:.6}
+.dhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.dnum{font-family:var(--f-mono);font-size:.75rem;color:var(--muted)}
+.dtitle{font-family:var(--f-display);font-weight:700;font-size:1.08rem}
+.dwhere{margin-left:auto;font-size:.78rem}
+.items{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.it{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:start}
+.it time{font-family:var(--f-mono);font-size:.82rem;color:var(--muted);padding-top:2px}
+.it .body{min-width:0}
+.it .t{font-weight:500}
+.it .n{font-size:.83rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.7rem;border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:1px;background:var(--chip);color:var(--ink)}
+.tag.fly{background:var(--sand-soft)}
+.tag.book{background:transparent;border:1px solid var(--coral);color:var(--coral)}
+.tag.warn{background:var(--coral);color:var(--paper)}
+.go{font-size:.78rem;text-decoration:none;white-space:nowrap}
+.go::before{content:"↗ "}
+.todo{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 16px;display:grid;gap:2px}
+.todo label{display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.todo label:last-of-type{border-bottom:0}
+.todo input{margin-top:5px;accent-color:var(--sea);width:16px;height:16px;flex:none}
+.todo .when{margin-left:auto;font-family:var(--f-mono);font-size:.75rem;color:var(--muted);white-space:nowrap;padding-left:8px}
+.todo label.done span.x{text-decoration:line-through;color:var(--muted)}
+.prog{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+.tbl-wrap{overflow-x:auto;background:var(--paper);border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+td,th{padding:9px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:500;color:var(--muted);font-size:.78rem}
+td.r,th.r{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+tr.sum td{font-weight:700}
+.qs{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.qs li::marker{color:var(--sand)}
+footer{font-size:.78rem;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.route{stroke-dasharray:6 6;animation:dash 30s linear infinite}@keyframes dash{to{stroke-dashoffset:-240}}}
+@media (max-width:480px){.it{grid-template-columns:44px 1fr}.dwhere{margin-left:0}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Abu Dhabi ⇄ Egypt · 11.26 – 12.05 · 2026</div>
+  <h1>开罗<span class="dot"> · </span>达哈卜</h1>
+  <div class="meta">
+    <span class="pill draft">草案 v2 · 边聊边改</span>
+    <span class="pill">4 人</span>
+    <span class="pill">7 晚酒店 + 1 晚夜车 + 红眼回程</span>
+    <span class="pill">埃及时间 UTC+2 · 比阿联酋慢 2 小时</span>
+  </div>
+</header>
+
+<section class="now" aria-live="polite">
+  <div class="lbl" id="now-lbl">下一件事</div>
+  <div class="what" id="now-what">MS917 阿布扎比 → 开罗</div>
+  <div class="clock" id="now-clock">—</div>
+  <div class="sub" id="now-sub">按你手机的当前时间计算</div>
+</section>
+
+<section class="map" aria-label="路线草图">
+  <svg id="map" viewBox="0 0 600 460" role="img" aria-label="开罗、达哈卜路线示意">
+    <defs>
+      <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/>
+      </filter>
+      <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,1 L9,5 L0,9" fill="none" stroke="var(--sand)" stroke-width="1.6"/>
+      </marker>
+    </defs>
+  </svg>
+  <div class="legend">
+    <span><i></i>飞机</span><span><i class="road"></i>大巴 ~10 小时</span><span><i class="trip"></i>一日游</span>
+    <span><b>吉萨</b> 1 晚</span><span><b>达哈卜</b> 6 晚</span><span><b>回程夜车</b> 1 晚</span>
+  </div>
+</section>
+
+<section style="display:grid;gap:12px">
+  <h2>每日行程 <small>时间均为当地时间，地点可点开导航</small></h2>
+  <div class="days" id="days"></div>
+</section>
+
+<section style="display:grid;gap:12px">
+  <h2>待办清单 <small class="prog" id="prog"></small></h2>
+  <div class="todo" id="todo"></div>
+  <div style="font-size:.78rem;color:var(--muted)">勾选只保存在你自己的设备上。</div>
+</section>
+
+<section style="display:grid;gap:12px">
+  <h2>费用（已查到的部分）<small>人民币</small></h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>项目</th><th>说明</th><th class="r">单人</th><th class="r">4 人</th></tr></thead>
+    <tbody>
+      <tr><td>埃及航空往返</td><td>MS917 11/26 去 · MS916 12/4 回；去程托运 2×23kg，回程 1×23kg；不得改期，退票费 488 元起（携程报价）</td><td class="r">¥2,235</td><td class="r">¥8,940</td></tr>
+      <tr><td>大巴 开罗 ⇄ 达哈卜</td><td>Go Bus / East Delta 往返，票价待查</td><td class="r">待定</td><td class="r">待定</td></tr>
+      <tr><td>备选：4 人包车</td><td>开罗 ⇄ 达哈卜带司机，单程 7–8 小时；待询价</td><td class="r">—</td><td class="r">待定</td></tr>
+      <tr><td>埃及电子签</td><td>visa2egypt.gov.eg，约 25 美元</td><td class="r">≈¥180</td><td class="r">≈¥720</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section style="display:grid;gap:10px">
+  <h2>待讨论</h2>
+  <ol class="qs">
+    <li>去程大巴：11/26 凌晨 2 点多就要出门，当晚再坐夜车太累，所以先排成 11/27 早班白天大巴，傍晚到达哈卜，沿途能看西奈风景。还是坚持坐夜车？</li>
+    <li>4 个人包一辆带司机的车跑开罗 ⇄ 达哈卜，要不要询价和大巴比一比？</li>
+    <li>达哈卜是考 PADI Open Water（3–4 天），还是只做体验潜水和浮潜？考证的话西奈山要挪到最后。</li>
+    <li>12/3 白天：彩色峡谷，还是在达哈卜海边放空？</li>
+    <li>12/4 开罗一天要不要订个钟点房（day use），下夜车先洗澡寄行李？</li>
+  </ol>
+</section>
+
+<footer>不放订单号、护照号等敏感信息。行程有变化，告诉 Claude 一句就会更新这个页面，链接不变。</footer>
+</div>
+
+<script>
+const Q = s => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(s);
+const DAYS = [
+ {d:"2026-11-26", w:"周四", title:"一早飞开罗，金字塔 + 大埃及博物馆", where:"吉萨", items:[
+   {t:"02:30", tz:"+04:00", what:"出门去阿布扎比机场 A 航站楼", note:"国际航班提前 2.5–3 小时到", place:"Zayed International Airport Terminal A"},
+   {t:"05:20", tz:"+04:00", what:"MS917 阿布扎比 → 开罗", note:"07:10 到开罗 T3（当地时间），飞行约 3 小时 50 分", tag:"fly", ev:true},
+   {t:"08:00", tz:"+02:00", what:"入境，打车去吉萨酒店放行李", note:"Uber / Careem，约 50 分钟；提前问酒店能否早入住", tag:"book", place:"Giza Pyramids hotels"},
+   {t:"09:30", tz:"+02:00", what:"吉萨金字塔群、狮身人面像", note:"上午人还不算多；骆驼和马车先谈好价再上", place:"Pyramids of Giza", tag:"book"},
+   {t:"13:00", tz:"+02:00", what:"午饭", note:"金字塔附近有景观餐厅"},
+   {t:"14:30", tz:"+02:00", what:"大埃及博物馆 GEM", note:"图坦卡蒙展厅、大阶梯；门票提前网上买", place:"Grand Egyptian Museum", tag:"book"},
+   {t:"18:30", tz:"+02:00", what:"晚饭，看金字塔夜景，早点睡", note:"凌晨就起床了，第二天一早还要赶车"}
+ ]},
+ {d:"2026-11-27", w:"周五", title:"白天大巴去达哈卜", where:"达哈卜", items:[
+   {t:"06:30", tz:"+02:00", what:"退房，打车去大巴站", note:"吉萨到市区车站约 40 分钟", place:"Go Bus Tahrir Cairo"},
+   {t:"07:30", tz:"+02:00", what:"大巴 开罗 → 达哈卜", note:"Go Bus / East Delta 早班，约 10 小时；护照随身，沿途检查站要查；班次以订票为准", tag:"book", ev:true},
+   {t:"17:30", tz:"+02:00", what:"到达哈卜，打车去住处", place:"Dahab bus station"},
+   {t:"19:00", tz:"+02:00", what:"Lighthouse 区海边晚饭", place:"Lighthouse Dahab"}
+ ]},
+ {d:"2026-11-28", w:"周六", title:"达哈卜第一天：浮潜试水", where:"达哈卜", items:[
+   {t:"09:00", tz:"+02:00", what:"睡到自然醒，海边早饭"},
+   {t:"10:30", tz:"+02:00", what:"灯塔点浮潜试水", place:"Lighthouse Reef Dahab"},
+   {t:"14:00", tz:"+02:00", what:"去潜水中心定后几天的潜水", place:"Dahab dive centers"},
+   {t:"16:30", tz:"+02:00", what:"海边看日落", note:"这里 16:45 左右就日落"}
+ ]},
+ {d:"2026-11-29", w:"周日", title:"Ras Abu Galum，夜上西奈山", where:"达哈卜", items:[
+   {t:"09:00", tz:"+02:00", what:"Ras Abu Galum 保护区", note:"坐船或骑骆驼进去，Blue Lagoon 浮潜，贝都因午饭", place:"Ras Abu Galum Protectorate", tag:"book"},
+   {t:"16:00", tz:"+02:00", what:"回达哈卜，早点睡几小时"},
+   {t:"23:00", tz:"+02:00", what:"出发去西奈山", note:"车程约 2 小时；带厚外套、头灯，山顶接近 0°C", tag:"book", ev:true}
+ ]},
+ {d:"2026-11-30", w:"周一", title:"西奈山日出 + 圣凯瑟琳修道院", where:"达哈卜", items:[
+   {t:"02:00", tz:"+02:00", what:"开始登山", note:"约 3 小时，最后 750 级台阶", place:"Mount Sinai"},
+   {t:"06:15", tz:"+02:00", what:"山顶看日出", note:"约 06:15"},
+   {t:"09:00", tz:"+02:00", what:"圣凯瑟琳修道院", note:"一、二、三、四、六上午开放，周五周日关门", place:"Saint Catherine's Monastery"},
+   {t:"13:00", tz:"+02:00", what:"回达哈卜，补觉"}
+ ]},
+ {d:"2026-12-01", w:"周二", title:"潜水日 · 蓝洞", where:"达哈卜", items:[
+   {t:"08:30", tz:"+02:00", what:"蓝洞 & The Bells", note:"体验潜水或浮潜；蓝洞拱门只适合技术潜水，别去", place:"Blue Hole Dahab", tag:"book"},
+   {t:"14:00", tz:"+02:00", what:"峡谷点 The Canyon", place:"The Canyon dive site Dahab"},
+   {t:"19:00", tz:"+02:00", what:"Lighthouse 区海鲜晚饭"}
+ ]},
+ {d:"2026-12-02", w:"周三 · 阿联酋国庆", title:"潜水日 · 最后一潜", where:"达哈卜", items:[
+   {t:"09:00", tz:"+02:00", what:"Three Pools / 灯塔点潜水", place:"Three Pools Dahab"},
+   {t:"17:00", tz:"+02:00", what:"最后一潜结束", note:"潜水后 24 小时内不坐飞机、不上高海拔；离 12/4 晚上的航班隔了两天多", tag:"warn"},
+   {t:"19:00", tz:"+02:00", what:"自由活动"}
+ ]},
+ {d:"2026-12-03", w:"周四", title:"彩色峡谷，夜车回开罗", where:"夜车上", items:[
+   {t:"08:00", tz:"+02:00", what:"可选：彩色峡谷", note:"半日游；或在海边放空", place:"Colored Canyon Sinai", tag:"book"},
+   {t:"12:00", tz:"+02:00", what:"退房，行李寄存"},
+   {t:"21:00", tz:"+02:00", what:"夜班大巴 达哈卜 → 开罗", note:"约 10 小时，早上 7 点左右到", tag:"book", place:"Dahab bus station", ev:true}
+ ]},
+ {d:"2026-12-04", w:"周五", title:"开罗老城一整天，深夜回阿布扎比", where:"红眼航班", items:[
+   {t:"07:00", tz:"+02:00", what:"大巴到开罗，早饭", note:"可订市中心钟点房洗澡、寄行李", place:"Downtown Cairo"},
+   {t:"09:30", tz:"+02:00", what:"埃及博物馆（解放广场）", note:"老馆，木乃伊和大量原件", place:"Egyptian Museum Tahrir Cairo"},
+   {t:"13:00", tz:"+02:00", what:"午饭：Koshary", place:"Abou Tarek Koshary"},
+   {t:"14:30", tz:"+02:00", what:"萨拉丁城堡、穆罕默德·阿里清真寺", note:"周五中午礼拜时间清真寺不对游客开放，下午去", place:"Cairo Citadel"},
+   {t:"17:00", tz:"+02:00", what:"汗·哈利利市场、穆伊兹街", note:"周五傍晚最热闹", place:"Khan el-Khalili Cairo"},
+   {t:"19:45", tz:"+02:00", what:"取行李，打车去机场 T3", note:"约 45 分钟，国际航班提前 2.5 小时到", place:"Cairo International Airport Terminal 3"},
+   {t:"22:45", tz:"+02:00", what:"MS916 开罗 → 阿布扎比", note:"12/5 04:05 到（阿联酋时间）", tag:"fly", ev:true}
+ ]},
+ {d:"2026-12-05", w:"周六", title:"到家", where:"阿布扎比", items:[
+   {t:"04:05", tz:"+04:00", what:"到阿布扎比 A 航站楼", note:"周六可以补觉"}
+ ]}
+];
+const TODO = [
+ ["ms","订埃及航空往返 MS917 / MS916（4 人，不能改期）","先办"],
+ ["visa","4 人办埃及电子签（visa2egypt.gov.eg）","先办"],
+ ["bus","订大巴：11/27 开罗→达哈卜早班、12/3 达哈卜→开罗夜车（各 4 张）","先办"],
+ ["giza","订吉萨酒店 1 晚（11/26），问能否早入住","尽快"],
+ ["dahab","订达哈卜住宿 6 晚（11/27–12/3）","尽快"],
+ ["dayroom","可选：12/4 开罗市中心钟点房",""],
+ ["driver","达哈卜一日游包车（Ras Abu Galum、彩色峡谷）",""],
+ ["dive","联系潜水中心：体验潜水还是考证",""],
+ ["sinai","订西奈山日出团（11/29 晚出发）",""],
+ ["gem","网上买大埃及博物馆门票（11/26）",""],
+ ["ins","买旅行保险（含潜水）",""],
+ ["cash","备美元现金，小费和签证用",""],
+ ["sim","买埃及 eSIM",""],
+ ["pack","打包：厚外套、头灯、防晒、泳衣",""]
+];
+
+(function(){
+  const svg=document.getElementById('map'), NS="http://www.w3.org/2000/svg";
+  const W=600,H=460, L0=30.55,L1=35.25, B0=27.35,B1=30.55;
+  const P=(lon,lat)=>[ (lon-L0)/(L1-L0)*W, (B1-lat)/(B1-B0)*H ];
+  const path=pts=>pts.map((p,i)=>{const [x,y]=P(...p);return (i?'L':'M')+x.toFixed(1)+','+y.toFixed(1)}).join(' ');
+  const el=(tag,attrs,parent=svg)=>{const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);parent.appendChild(e);return e};
+  el('rect',{x:0,y:0,width:W,height:H,rx:10,fill:'var(--land)'});
+  const g=el('g',{filter:'url(#rough)'});
+  el('path',{d:path([[32.55,29.97],[32.75,29.55],[33.1,29.0],[33.55,28.35],[34.0,27.95],[34.25,27.72],[34.45,27.85],[34.6,27.95],[34.85,28.15],[35.25,27.95],[35.25,27.35],[33.6,27.35],[33.85,27.25],[33.55,27.8],[33.1,28.45],[32.7,29.15],[32.4,29.6],[32.55,29.97]])+'Z',fill:'var(--sea-soft)',stroke:'var(--sea)','stroke-width':1.6},g);
+  el('path',{d:path([[34.45,27.95],[34.48,28.3],[34.52,28.6],[34.66,28.97],[34.78,29.3],[34.9,29.5],[35.0,29.53],[34.98,29.2],[34.9,28.8],[34.82,28.4],[34.75,28.1],[34.6,27.95]])+'Z',fill:'var(--sea-soft)',stroke:'var(--sea)','stroke-width':1.6},g);
+  el('path',{d:path([[31.28,30.55],[31.24,30.05],[31.2,29.55],[31.1,29.05],[30.95,28.55],[30.82,28.05],[30.85,27.35]]),fill:'none',stroke:'var(--sea)','stroke-width':2.2},g);
+  const txt=(x,y,s,o={})=>{const t=el('text',Object.assign({x,y,'font-family':'var(--f-hand)','font-size':o.size||15,fill:o.fill||'var(--muted)','text-anchor':o.anchor||'start'},o.attr||{}));t.textContent=s;return t};
+  let [x,y]=P(31.0,28.4); txt(x,y,'尼罗河',{size:13,fill:'var(--sea)',attr:{transform:`rotate(-70 ${x} ${y})`}});
+  [x,y]=P(33.95,27.55); txt(x,y,'红海',{size:18,fill:'var(--sea)'});
+  [x,y]=P(33.7,29.35); txt(x,y,'西 奈 半 岛',{size:17});
+  [x,y]=P(32.75,28.9); txt(x,y,'苏伊士湾',{size:12,fill:'var(--sea)',attr:{transform:`rotate(-55 ${x} ${y})`}});
+  const R=(d,stroke,dash,w,arrow)=>el('path',Object.assign({d,fill:'none',stroke,'stroke-width':w,'stroke-linecap':'round','stroke-dasharray':dash},arrow?{'marker-end':'url(#arrow)'}:{}));
+  const C=P(31.24,30.04), G=P(31.13,29.98), S=P(34.33,27.91), D=P(34.51,28.50), K=P(33.95,28.56), A=P(34.55,28.65);
+  R(`M${W-8},18 Q${W*0.62},40 ${C[0]+6},${C[1]-4}`,'var(--sand)','6 6',2,true).classList.add('route');
+  R(path([[31.24,30.04],[31.9,30.0],[32.55,29.97],[32.75,29.85],[33.05,29.3],[33.5,28.65],[33.95,28.15],[34.3,27.95],[34.45,28.2],[34.51,28.5]]),'var(--coral)','',2.5);
+  R(`M${D[0]},${D[1]} Q${(D[0]+K[0])/2},${D[1]-28} ${K[0]},${K[1]}`,'var(--sea)','2 5',2);
+  R(`M${D[0]},${D[1]} L${A[0]},${A[1]}`,'var(--sea)','2 5',2);
+  const pin=(p,label,sub,dx=10,dy=4,anchor='start',big)=>{
+    el('circle',{cx:p[0],cy:p[1],r:big?7:5,fill:big?'var(--coral)':'var(--paper)',stroke:'var(--ink)','stroke-width':1.6});
+    txt(p[0]+dx,p[1]+dy,label,{size:big?17:14,fill:'var(--ink)',anchor});
+    if(sub) txt(p[0]+dx,p[1]+dy+16,sub,{size:12,anchor});
+  };
+  pin(C,'开罗','12/4 老城一天',10,-6); pin(G,'吉萨','住 1 晚',-10,8,'end');
+  pin(S,'沙姆沙伊赫','大巴经过',-10,16,'end');
+  pin(D,'达哈卜','住 6 晚 ⭐',12,4,'start',true);
+  pin(K,'西奈山','日出',-10,-4,'end'); pin(A,'Ras Abu Galum','',-10,-8,'end');
+  txt(W-12,36,'阿布扎比 ↗ 约 4 小时',{size:13,anchor:'end',fill:'var(--sand)'});
+})();
+
+const toDate=(d,t,tz)=>new Date(`${d}T${t}:00${tz}`);
+function renderDays(){
+  const box=document.getElementById('days'); const now=new Date();
+  box.innerHTML=DAYS.map((day,i)=>{
+    const start=toDate(day.d,'00:00','+02:00'), end=toDate(day.d,'23:59','+02:00');
+    const cls= now>=start&&now<=end?'today':(now>end?'past':'');
+    const items=day.items.map(it=>{
+      const tag = it.tag==='fly'?'<span class="tag fly">航班</span>':it.tag==='book'?'<span class="tag book">要预订</span>':it.tag==='warn'?'<span class="tag warn">注意</span>':'';
+      const go = it.place?` <a class="go" href="${Q(it.place)}" target="_blank" rel="noopener">导航</a>`:'';
+      return `<li class="it"><time>${it.t}</time><div class="body"><div class="t">${it.what}${tag}${go}</div>${it.note?`<div class="n">${it.note}</div>`:''}</div></li>`;
+    }).join('');
+    return `<article class="day ${cls}"><div class="dhead"><span class="dnum">D${i+1} · ${day.d.slice(5).replace('-','/')} ${day.w}</span><span class="dtitle">${day.title}</span><span class="pill dwhere">${day.where}</span></div><ul class="items">${items}</ul></article>`;
+  }).join('');
+}
+const EVENTS=DAYS.flatMap(day=>day.items.map(it=>({at:toDate(day.d,it.t,it.tz),what:it.what,d:day.d,t:it.t,key:!!it.ev})));
+function fmt(ms){const m=Math.floor(ms/60000),d=Math.floor(m/1440),h=Math.floor(m%1440/60),mm=m%60;return d?`${d} 天 ${h} 小时`:(h?`${h} 小时 ${mm} 分`:`${mm} 分钟`)}
+function tick(){
+  const now=new Date(), first=EVENTS[0].at, last=EVENTS[EVENTS.length-1].at;
+  const L=document.getElementById('now-lbl'),Wt=document.getElementById('now-what'),Ck=document.getElementById('now-clock'),Sb=document.getElementById('now-sub');
+  if(now<first){const fl=EVENTS.find(e=>e.key);L.textContent='距离起飞';Wt.textContent=`${fl.d.slice(5).replace('-','/')} ${fl.t} · ${fl.what}`;Ck.textContent=fmt(fl.at-now);Sb.textContent='第一件事：'+EVENTS[0].d.slice(5).replace('-','/')+' '+EVENTS[0].t+' '+EVENTS[0].what;return}
+  if(now>last){L.textContent='旅程结束';Wt.textContent='欢迎回家';Ck.textContent='🏠';Sb.textContent='';return}
+  const nx=EVENTS.find(e=>e.at>now);L.textContent='下一件事';Wt.textContent=`${nx.t} · ${nx.what}`;Ck.textContent='还有 '+fmt(nx.at-now);
+  const key=EVENTS.find(e=>e.key&&e.at>now);Sb.textContent=key&&key!==nx?`下一个关键节点：${key.d.slice(5).replace('-','/')} ${key.t} ${key.what}`:'';
+}
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+function renderTodo(){
+  const box=document.getElementById('todo');
+  box.innerHTML=TODO.map(([id,txt,when])=>{const on=store.get('eg26-'+id)==='1';return `<label class="${on?'done':''}"><input type="checkbox" id="todo-${id}" data-id="${id}" ${on?'checked':''}><span class="x">${txt}</span>${when?`<span class="when">${when}</span>`:''}</label>`}).join('');
+  const n=TODO.filter(([id])=>store.get('eg26-'+id)==='1').length;
+  document.getElementById('prog').textContent=`${n} / ${TODO.length}`;
+}
+document.getElementById('todo').addEventListener('change',e=>{const id=e.target.dataset.id;if(!id)return;store.set('eg26-'+id,e.target.checked?'1':'0');renderTodo()});
+renderDays();renderTodo();tick();setInterval(tick,30000);
+</script>
+
+</body>
+</html>
