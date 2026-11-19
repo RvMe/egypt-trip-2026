@@ -101,6 +101,8 @@ tr.sum td{font-weight:700}
 .acts .p{font-family:var(--f-mono);font-size:.78rem;color:var(--sand);white-space:nowrap}
 .acts .n{display:block;font-size:.83rem;color:var(--muted)}
 .acts .w{color:var(--coral)}
+.cmp td:first-child{white-space:nowrap;color:var(--muted);padding-right:6px}
+.cmp td,.cmp th{padding-left:10px;padding-right:10px}
 .pick{background:var(--sand-soft);border-radius:14px;padding:12px 16px;font-size:.9rem;display:grid;gap:4px}
 footer{font-size:.78rem;color:var(--muted)}
 @media (prefers-reduced-motion:no-preference){.route{stroke-dasharray:6 6;animation:dash 30s linear infinite}@keyframes dash{to{stroke-dashoffset:-240}}}
@@ -162,10 +164,54 @@ footer{font-size:.78rem;color:var(--muted)}
     <tbody>
       <tr><td>埃及航空往返</td><td>MS917 11/26 去 · MS916 12/4 回；去程托运 2×23kg，回程 1×23kg；不得改期，退票费 488 元起（携程报价）</td><td class="r">¥2,235</td><td class="r">¥8,940</td></tr>
       <tr><td>大巴 开罗 ⇄ 达哈卜</td><td>Go Bus 官网 11/19 实时价：去程 11/27 09:30 Elite 1000 埃镑 + 回程 12/3 21:00 Super Go D 680 埃镑（回程改坐 23:30 Elite 则两程都是 1000，单人 ≈¥294）。解放广场 ⇄ 达哈卜 El Masbat 街，go-bus.com 可刷外卡</td><td class="r">≈¥247</td><td class="r">≈¥988</td></tr>
+      <tr><td>备选：飞机 开罗 ⇄ 沙姆沙伊赫</td><td>11/27 08:00 Nile Air ¥352 + 12/4 10:00 Nile Air ¥604（Google Flights 11/19 价，可能不含托运），加沙姆机场 ⇄ 达哈卜包车两趟（约 $40–60/车/趟，4 人分）。详见下面「交通：大巴 vs 飞机」</td><td class="r">≈¥1,100</td><td class="r">≈¥4,500</td></tr>
       <tr><td>备选：4 人包车</td><td>开罗 ⇄ 达哈卜带司机，单程 7–8 小时；待询价</td><td class="r">—</td><td class="r">待定</td></tr>
       <tr><td>埃及电子签</td><td>visa2egypt.gov.eg，约 25 美元</td><td class="r">≈¥180</td><td class="r">≈¥720</td></tr>
     </tbody>
   </table></div>
+</section>
+
+<section style="display:grid;gap:12px" id="transport">
+  <h2>交通：大巴 vs 飞机 <small>开罗 ⇄ 达哈卜 · 11/19 实时查价，以订票页为准</small></h2>
+  <div class="tbl-wrap"><table class="cmp">
+    <thead><tr><th></th><th>大巴（现行方案）</th><th>飞机 + 包车</th></tr></thead>
+    <tbody>
+      <tr><td>怎么走</td><td>开罗解放广场 Go Bus 站 → 达哈卜 El Masbat 街，一车到底</td><td>开罗机场 CAI → 沙姆沙伊赫 SSH（飞 1 小时）→ 包车约 90 km、1–1.5 小时到达哈卜</td></tr>
+      <tr><td>门到门</td><td>10–12 小时（标称 10 小时，检查站会拖）</td><td>约 4–5 小时（提前 1.5 小时到机场 + 飞行 + 取行李 + 车程）</td></tr>
+      <tr><td>每人往返</td><td class="r">≈¥247</td><td class="r">≈¥1,100</td></tr>
+      <tr><td>好处</td><td>便宜；白天车能看西奈风景；回程夜车省一晚住宿</td><td>去程省下大半天，11/27 中午就能在海边；不折腾</td></tr>
+      <tr><td>代价</td><td>一整天耗在车上</td><td>贵约 ¥850/人；回程如果改白天飞，12/3 要在达哈卜或开罗多住一晚</td></tr>
+    </tbody>
+  </table></div>
+  <div class="acts">
+    <details open><summary>✈️ 去程航班 · 11/27 开罗 → 沙姆</summary><ul>
+      <li><b>08:00 → 09:00 Nile Air NP51</b> <span class="p">¥352</span>
+        <span class="n">最便宜也最早：吉萨 06:00 出发去机场，约 11:00 到达哈卜，下午就能浮潜。</span></li>
+      <li><b>09:00 → 10:05 埃及航空 MS22</b> <span class="p">¥564</span><span class="n">和 MS917/916 同一家，服务好一些。</span></li>
+      <li><b>11:00 → 12:00 Air Cairo SM4</b> <span class="p">¥481</span> · <b>13:15 → 14:20 埃及航空 MS24</b> <span class="p">¥461</span>
+        <span class="n">吉萨早上能再看一眼金字塔，傍晚前到达哈卜。</span></li>
+      <li>当天还有 06:00、15:05、16:00、19:40、22:25 的班次。11/26 落地当天直接转机这次没查到数据，而且要放弃吉萨那一晚。</li>
+    </ul></details>
+    <details><summary>✈️ 回程航班 · 沙姆 → 开罗（接 12/4 22:45 MS916）</summary><ul>
+      <li><b>12/4 05:00 → 06:05 埃及航空 MS21</b> <span class="p">¥822</span>
+        <span class="n">和现在夜车方案的开罗一整天完全一样，但凌晨 2:30 就要从达哈卜出发。</span></li>
+      <li><b>12/4 10:00 → 11:10 Nile Air NP52</b> <span class="p">¥604</span>
+        <span class="n">12/3 晚上睡在达哈卜（多订一晚），12/4 早上 07:30 出发；开罗只剩下午半天。</span></li>
+      <li><b>12/3 18:30 → 20:00 Air Cairo SM7</b> <span class="p">¥807</span> · <b>23:30 → 01:05 Air Cairo SM9</b> <span class="p">¥517</span>
+        <span class="n">12/3 晚上住开罗酒店，12/4 开罗一整天精神最好。</span></li>
+      <li><span class="w">潜水后 18–24 小时内不要坐飞机</span>：现在最后一潜是 12/2 下午，上面这些班次都赶得上；别把潜水挪到 12/3。</li>
+    </ul></details>
+    <details><summary>🚕 沙姆机场 ⇄ 达哈卜</summary><ul>
+      <li>约 90 km，1–1.5 小时，中途有检查站，护照随身</li>
+      <li>4 人一辆车：网上预订约 €40–95/车/趟，也可以让达哈卜住处安排接机，通常更便宜</li>
+      <li>机场门口出租车要先谈好价格，或用 InDrive</li>
+    </ul></details>
+    <details><summary>💡 订票注意</summary><ul>
+      <li>Nile Air / Air Cairo 低价票可能不含托运行李，订前看行李额；去程我们每人 2×23kg</li>
+      <li>和 MS917/916 是分开出票，延误不会给你改签，所以去程别订落地当天的转机</li>
+      <li>开罗机场国内线航站楼看机票（埃及航空在 T3）</li>
+    </ul></details>
+  </div>
 </section>
 
 <section style="display:grid;gap:12px" id="dahab">
@@ -241,7 +287,8 @@ footer{font-size:.78rem;color:var(--muted)}
   <ol class="qs">
     <li>去程大巴：11/26 凌晨 2 点多就要出门，当晚再坐夜车太累，所以先排成 11/27 早班白天大巴，傍晚到达哈卜，沿途能看西奈风景。还是坚持坐夜车？</li>
     <li>4 个人包一辆带司机的车跑开罗 ⇄ 达哈卜，要不要询价和大巴比一比？</li>
-    <li>达哈卜是考 PADI Open Water（3–4 天），还是只做体验潜水和浮潜？考证的话西奈山要挪到最后。</li>
+    <li>坐大巴（每人往返约 ¥247）还是飞沙姆沙伊赫（约 ¥1,100，去程省大半天）？也可以去程飞、回程坐夜车。</li>
+    <li>达哈卜是考 PADI Open Water（3–4 天），还是只做体验潜水和浮潜？西奈山（约 2,285 米）要排在潜水之前，或者最后一潜后至少隔 24 小时。</li>
     <li>12/3 白天：彩色峡谷，还是在达哈卜海边放空？</li>
     <li>12/4 开罗一天要不要订个钟点房（day use），下夜车先洗澡寄行李？</li>
   </ol>
