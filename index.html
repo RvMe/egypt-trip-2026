@@ -312,9 +312,9 @@ const DAYS = [
    {t:"02:30", tz:"+04:00", what:"出门去阿布扎比机场 A 航站楼", note:"国际航班提前 2.5–3 小时到", place:"Zayed International Airport Terminal A"},
    {t:"05:20", tz:"+04:00", what:"MS917 阿布扎比 → 开罗", note:"07:10 到开罗 T3（当地时间），飞行约 3 小时 50 分", tag:"fly", ev:true},
    {t:"08:00", tz:"+02:00", what:"入境，打车去吉萨酒店放行李", note:"Uber / Careem，约 50 分钟；提前问酒店能否早入住", tag:"book", place:"Giza Pyramids hotels"},
-   {t:"09:30", tz:"+02:00", what:"吉萨金字塔群、狮身人面像", note:"上午人还不算多；骆驼和马车先谈好价再上", place:"Pyramids of Giza", tag:"book"},
+   {t:"09:30", tz:"+02:00", what:"吉萨金字塔群、狮身人面像", note:"走正门（有安检，骗子少），别让司机送到后门；门票约 700 埃镑（第三方资料）；骆驼和马车先谈好总价再上", place:"Pyramids of Giza", tag:"book"},
    {t:"13:00", tz:"+02:00", what:"午饭", note:"金字塔附近有景观餐厅"},
-   {t:"14:30", tz:"+02:00", what:"大埃及博物馆 GEM", note:"图坦卡蒙展厅、大阶梯；门票提前网上买", place:"Grand Egyptian Museum", tag:"book"},
+   {t:"14:30", tz:"+02:00", what:"大埃及博物馆 GEM", note:"图坦卡蒙展厅、大阶梯；门票 1,830 埃镑（11/1 起），现场不卖，提前在 visit-gem.com 订时段票", place:"Grand Egyptian Museum", tag:"book"},
    {t:"18:30", tz:"+02:00", what:"晚饭，看金字塔夜景，早点睡", note:"第二天 05:30 就要出发去机场；请酒店准备早餐打包盒"}
  ]},
  {d:"2026-11-27", w:"周五", title:"飞沙姆沙伊赫，中午到达哈卜", where:"达哈卜", items:[
@@ -324,7 +324,7 @@ const DAYS = [
    {t:"10:45", tz:"+02:00", what:"到达哈卜住处，放行李", note:"太早入住不了就先寄存行李"},
    {t:"12:00", tz:"+02:00", what:"海边午饭", place:"Lighthouse Dahab"},
    {t:"14:00", tz:"+02:00", what:"灯塔点浮潜试水", note:"主街大店租面镜脚蹼救生衣约 150 埃镑", place:"Lighthouse Reef Dahab"},
-   {t:"16:30", tz:"+02:00", what:"海边看日落", note:"这里 16:45 左右就日落"}
+   {t:"16:30", tz:"+02:00", what:"海边看晚霞", note:"16:45 左右日落；达哈卜面朝东，太阳落在身后的山里，海面和对岸沙特的山会变成粉紫色"}
  ]},
  {d:"2026-11-28", w:"周六", title:"达哈卜第二天：鳗鱼花园 + 订活动", where:"达哈卜", items:[
    {t:"09:00", tz:"+02:00", what:"睡到自然醒，海边早饭"},
@@ -340,7 +340,7 @@ const DAYS = [
  {d:"2026-11-30", w:"周一", title:"西奈山日出 + 圣凯瑟琳修道院", where:"达哈卜", items:[
    {t:"02:00", tz:"+02:00", what:"开始登山", note:"约 3 小时，最后 750 级台阶", place:"Mount Sinai"},
    {t:"06:15", tz:"+02:00", what:"山顶看日出", note:"约 06:15"},
-   {t:"09:00", tz:"+02:00", what:"圣凯瑟琳修道院", note:"一、二、三、四、六上午开放，周五周日关门", place:"Saint Catherine's Monastery"},
+   {t:"09:00", tz:"+02:00", what:"圣凯瑟琳修道院", note:"官网写平日 08:45–12:45 开放、周日关门；2025 年曾因纠纷暂停对游客开放，报团时让向导确认能不能进", place:"Saint Catherine's Monastery", tag:"warn"},
    {t:"13:00", tz:"+02:00", what:"回达哈卜，补觉"}
  ]},
  {d:"2026-12-01", w:"周二", title:"潜水日 · 蓝洞", where:"达哈卜", items:[
@@ -360,7 +360,7 @@ const DAYS = [
  ]},
  {d:"2026-12-04", w:"周五", title:"开罗老城一整天，深夜回阿布扎比", where:"红眼航班", items:[
    {t:"07:00", tz:"+02:00", what:"大巴到开罗，早饭", note:"可订市中心钟点房洗澡、寄行李", place:"Downtown Cairo"},
-   {t:"09:30", tz:"+02:00", what:"埃及博物馆（解放广场）", note:"老馆，木乃伊和大量原件", place:"Egyptian Museum Tahrir Cairo"},
+   {t:"09:00", tz:"+02:00", what:"埃及博物馆（解放广场）", note:"老馆，木乃伊和大量原件；外国人 550 埃镑；周五可能有礼拜时段，9 点到最稳", place:"Egyptian Museum Tahrir Cairo"},
    {t:"13:00", tz:"+02:00", what:"午饭：Koshary", place:"Abou Tarek Koshary"},
    {t:"14:30", tz:"+02:00", what:"萨拉丁城堡、穆罕默德·阿里清真寺", note:"周五中午礼拜时间清真寺不对游客开放，下午去", place:"Cairo Citadel"},
    {t:"17:00", tz:"+02:00", what:"汗·哈利利市场、穆伊兹街", note:"周五傍晚最热闹", place:"Khan el-Khalili Cairo"},
@@ -383,7 +383,7 @@ const TODO = [
  ["driver","达哈卜一日游包车（Ras Abu Galum、彩色峡谷）",""],
  ["dive","联系潜水中心：体验潜水还是考证",""],
  ["sinai","订西奈山日出团（11/29 晚出发）",""],
- ["gem","网上买大埃及博物馆门票（11/26）",""],
+ ["gem","网上订大埃及博物馆 11/26 下午时段票（visit-gem.com，1,830 埃镑/人，现场不卖）","尽快"],
  ["ins","买旅行保险（含潜水）",""],
  ["cash","备美元现金，小费和签证用",""],
  ["sim","买埃及 eSIM",""],
