@@ -96,7 +96,7 @@ tr.sum td{font-weight:700}
 .acts details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:10px 16px}
 .acts summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:1.02rem;padding:4px 0}
 .acts summary small{font-family:var(--f-body);font-weight:400;font-size:.78rem;color:var(--muted);margin-left:8px}
-.acts ul{margin:6px 0 4px;padding-left:1.1em;display:grid;gap:8px}
+.acts ul,.acts ol{margin:6px 0 4px;padding-left:1.1em;display:grid;gap:8px}
 .acts li::marker{color:var(--sea)}
 .acts .p{font-family:var(--f-mono);font-size:.78rem;color:var(--sand);white-space:nowrap}
 .acts .n{display:block;font-size:.83rem;color:var(--muted)}
@@ -104,8 +104,12 @@ tr.sum td{font-weight:700}
 .cmp td:first-child{white-space:nowrap;color:var(--muted);padding-right:6px}
 .cmp td,.cmp th{padding-left:10px;padding-right:10px}
 .pick{background:var(--sand-soft);border-radius:14px;padding:12px 16px;font-size:.9rem;display:grid;gap:4px}
+section[id]{scroll-margin-top:12px}
+.qnav{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.qnav a{display:inline-block;padding:3px 12px;border-radius:999px;background:var(--chip);color:var(--ink);font-size:.82rem;font-weight:500;text-decoration:none}
+.qnav a:hover{background:var(--sea-soft)}
 footer{font-size:.78rem;color:var(--muted)}
-@media (prefers-reduced-motion:no-preference){.route{stroke-dasharray:6 6;animation:dash 30s linear infinite}@keyframes dash{to{stroke-dashoffset:-240}}}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}.route{stroke-dasharray:6 6;animation:dash 30s linear infinite}@keyframes dash{to{stroke-dashoffset:-240}}}
 @media (max-width:480px){.it{grid-template-columns:44px 1fr}.dwhere{margin-left:0}}
 </style>
 
@@ -119,6 +123,9 @@ footer{font-size:.78rem;color:var(--muted)}
     <span class="pill">7 晚酒店 + 1 晚夜车 + 红眼回程</span>
     <span class="pill">埃及时间 UTC+2 · 比阿联酋慢 2 小时</span>
   </div>
+  <nav class="qnav" aria-label="快速跳转">
+    <a href="#plan">行程</a><a href="#todo-sec">待办</a><a href="#costs">费用</a><a href="#transport">交通</a><a href="#info">实用信息</a><a href="#food">吃喝</a><a href="#dahab">玩什么</a><a href="#stay">住哪</a>
+  </nav>
 </header>
 
 <section class="now" aria-live="polite">
@@ -146,28 +153,28 @@ footer{font-size:.78rem;color:var(--muted)}
   </div>
 </section>
 
-<section style="display:grid;gap:12px">
+<section style="display:grid;gap:12px" id="plan">
   <h2>每日行程 <small>时间均为当地时间，地点可点开导航</small></h2>
   <div class="days" id="days"></div>
 </section>
 
-<section style="display:grid;gap:12px">
+<section style="display:grid;gap:12px" id="todo-sec">
   <h2>待办清单 <small class="prog" id="prog"></small></h2>
   <div class="todo" id="todo"></div>
   <div style="font-size:.78rem;color:var(--muted)">勾选只保存在你自己的设备上。</div>
 </section>
 
-<section style="display:grid;gap:12px">
+<section style="display:grid;gap:12px" id="costs">
   <h2>费用（已查到的部分）<small>人民币</small></h2>
   <div class="tbl-wrap"><table>
     <thead><tr><th>项目</th><th>说明</th><th class="r">单人</th><th class="r">4 人</th></tr></thead>
     <tbody>
       <tr><td>埃及航空往返</td><td>MS917 11/26 去 · MS916 12/4 回；去程托运 2×23kg，回程 1×23kg；不得改期，退票费 488 元起（携程报价）</td><td class="r">¥2,235</td><td class="r">¥8,940</td></tr>
       <tr><td>去程：飞机 开罗 → 沙姆</td><td>11/27 08:00 Nile Air NP51（Google Flights 11/19 价，可能不含托运，订前看行李额）</td><td class="r">≈¥352</td><td class="r">≈¥1,408</td></tr>
-      <tr><td>沙姆机场 → 达哈卜包车</td><td>6–7 座车整车约 1,500–1,700 埃镑，4 人分</td><td class="r">≈¥60</td><td class="r">≈¥235</td></tr>
-      <tr><td>回程：Go Bus 夜车</td><td>12/3 21:00 Super Go D 达哈卜 → 开罗解放广场，680 埃镑（改坐 23:30 Elite 则 1000 埃镑 ≈¥147）；go-bus.com 可刷外卡</td><td class="r">≈¥100</td><td class="r">≈¥400</td></tr>
-      <tr class="sum"><td>开罗 ⇄ 达哈卜 合计</td><td>去程飞机 + 包车 + 回程夜车</td><td class="r">≈¥512</td><td class="r">≈¥2,043</td></tr>
-      <tr><td>埃及电子签</td><td>visa2egypt.gov.eg，约 25 美元</td><td class="r">≈¥180</td><td class="r">≈¥720</td></tr>
+      <tr><td>沙姆机场 → 达哈卜包车</td><td>6–7 座车整车约 1,500–1,700 埃镑，4 人分</td><td class="r">≈¥53</td><td class="r">≈¥213</td></tr>
+      <tr><td>回程：Go Bus 夜车</td><td>12/3 21:00 Super Go D 达哈卜 → 开罗解放广场，680 埃镑（改坐 23:30 Elite 则 1000 埃镑 ≈¥133）；go-bus.com 可刷外卡</td><td class="r">≈¥91</td><td class="r">≈¥363</td></tr>
+      <tr class="sum"><td>开罗 ⇄ 达哈卜 合计</td><td>去程飞机 + 包车 + 回程夜车</td><td class="r">≈¥496</td><td class="r">≈¥1,984</td></tr>
+      <tr><td>埃及签证</td><td>落地签 $30（现金；或开罗机场数字落地签 $36 刷卡），电子签 $25（visa2egypt.gov.eg）</td><td class="r">≈¥180–215</td><td class="r">≈¥720–860</td></tr>
     </tbody>
   </table></div>
 </section>
@@ -180,9 +187,9 @@ footer{font-size:.78rem;color:var(--muted)}
     <tbody>
       <tr><td>怎么走</td><td>开罗解放广场 Go Bus 站 → 达哈卜 El Masbat 街，一车到底</td><td>开罗机场 CAI → 沙姆沙伊赫 SSH（飞 1 小时）→ 包车约 90 km、1–1.5 小时到达哈卜</td></tr>
       <tr><td>门到门</td><td>10–12 小时（标称 10 小时，检查站会拖）</td><td>约 4–5 小时（提前 1.5 小时到机场 + 飞行 + 取行李 + 车程）</td></tr>
-      <tr><td>每人往返</td><td class="r">≈¥247</td><td class="r">≈¥1,100</td></tr>
+      <tr><td>每人往返</td><td class="r">≈¥224</td><td class="r">≈¥1,063</td></tr>
       <tr><td>好处</td><td>便宜；白天车能看西奈风景；回程夜车省一晚住宿</td><td>去程省下大半天，11/27 中午就能在海边；不折腾</td></tr>
-      <tr><td>代价</td><td>一整天耗在车上</td><td>贵约 ¥850/人；回程如果改白天飞，12/3 要在达哈卜或开罗多住一晚</td></tr>
+      <tr><td>代价</td><td>一整天耗在车上</td><td>贵约 ¥840/人；回程如果改白天飞，12/3 要在达哈卜或开罗多住一晚</td></tr>
     </tbody>
   </table></div>
   <div class="acts">
@@ -205,7 +212,7 @@ footer{font-size:.78rem;color:var(--muted)}
     </ul></details>
     <details><summary>🚕 沙姆机场 ⇄ 达哈卜 <small>建议提前约 6–7 座车</small></summary><ul>
       <li><b>推荐：小红书好评司机 / 达哈卜住处代约</b> <span class="p">1,500–1,700 埃镑/车</span>
-        <span class="n">约 ¥220–250 整车，4 人分每人约 ¥60。小红书搜「达哈卜=沙姆沙伊赫机场包车司机推荐」「达哈卜沙姆包车 认准这个Shark」「千里挑一到一个实诚的沙姆司机」，联系方式在笔记图里；住处代约约 1,500–2,000 埃镑，出问题有人兜底。</span></li>
+        <span class="n">约 ¥200–227 整车，4 人分每人约 ¥50–57。小红书搜「达哈卜=沙姆沙伊赫机场包车司机推荐」「达哈卜沙姆包车 认准这个Shark」「千里挑一到一个实诚的沙姆司机」，联系方式在笔记图里；住处代约约 1,500–2,000 埃镑，出问题有人兜底。</span></li>
       <li><b>网上预订</b> <span class="p">轿车 $55–60 · 面包车约 $95</span>
         <span class="n">Kiwitaxi、A1Toureg 等，可刷卡、价格透明，但贵 1–2 倍。</span></li>
       <li><b>不太推荐</b>
@@ -221,12 +228,148 @@ footer{font-size:.78rem;color:var(--muted)}
       <li>Nile Air / Air Cairo 低价票可能不含托运行李，订前看行李额；去程我们每人 2×23kg</li>
       <li>和 MS917/916 是分开出票，延误不会给你改签，所以去程别订落地当天的转机</li>
       <li>开罗机场国内线航站楼看机票（埃及航空在 T3）</li>
+      <li>Nile Air 在开罗机场可能是 T1（埃及航空在 T3），看机票；托运约 30 kg（第三方资料），以机票为准。</li>
+    </ul></details>
+  </div>
+</section>
+
+<section style="display:grid;gap:12px" id="info">
+  <h2>实用信息 <small>入境、电话卡、钱、打车、安全、应急 · 11/20 整理，出发前再核对</small></h2>
+  <div class="acts">
+    <details open><summary>🛬 开罗 T3 落地流程 <small>11/26 07:10 MS917</small></summary><ol>
+      <li>飞机上填入境卡；没发的话签证处也有。</li>
+      <li><b>签证</b>：下接驳车上扶梯右转。两种：<ul><li>纸质落地签 <b>$30</b>（2026-03 起由 $25 涨到 $30），人工窗口买贴纸自己贴在护照上；要<b>干净无破损的美元现金</b>。窗口有两组，被墙隔开，另一边常常没人。</li><li>数字落地签 <b>$36</b>（$30 + $6 服务费），2026-08 起在到达厅自助机刷卡买（试点，和纸质并存）。</li><li>或出发前办电子签 <b>$25</b>（visa2egypt.gov.eg，认准官网，别用代办站）。</li><li>护照有效期 ≥ 6 个月，至少 1 页空白。</li></ul></li>
+      <li>过海关：备好护照、入境卡、签证、酒店订单截图。</li>
+      <li>下扶梯取行李；转盘区有<b>换汇窗口</b>和<b>电话卡柜台</b>（见下）。</li>
+      <li>办好卡、注册好打车 App 再出门，从 3 号门出到打车点。Uber 上车点按 App 里的定位（T3 一般在停车场 B/C 区）。核对车牌（阿拉伯数字）再上车；拒绝在门口主动说"我是你的 Uber 司机"的人。</li>
+      <li>去吉萨酒店：约 45–75 分钟。4 人带 8 件大行李一辆普通 Uber 装不下 → 叫 Uber XL / 两辆车，或请酒店接机（Mamlouk 报价约 $20/人，单程）。</li>
+    </ol></details>
+    <details><summary>📶 电话卡</summary><ul>
+      <li>开罗 T3 取行李转盘两侧有四家：e&amp;（Etisalat，机场店只收现金，插卡即用）、WE（紫色，可刷 Visa，小流量也能买）、Orange（右边，可刷 Visa，<b>插卡后约 3 小时才有网</b>）、Vodafone（红色，可刷 Visa，信号覆盖最好、略贵）。</li>
+      <li>参考价（2026-07，小红书）：e&amp; 620 埃镑 32.5 GB；Orange 700 埃镑 57 GB。9 天 4 人每人 20 GB 左右够用，酒店一般有 Wi-Fi。</li>
+      <li>要护照。办完问清自己的手机号；InDrive 注册要收阿拉伯语语音验证码，最好让柜台帮忙注册。</li>
+      <li>想落地就有网：出发前买 eSIM（Saily 等）。T3 人多可以步行约 10 分钟去 T2 买。</li>
+    </ul></details>
+    <details><summary>💵 钱</summary><ul>
+      <li>汇率（11 月中）：<b>1 美元 ≈ 53.5 埃镑</b>，1 元 ≈ 7.5 埃镑。本页人民币都是粗算。</li>
+      <li>带：干净无破损的美元现金（签证、换汇、小费）+ Visa/Mastercard。<b>银联、AmEx 在埃及 ATM 基本用不了。</b></li>
+      <li>ATM：选"按埃镑扣款"，拒绝 ATM 自带的货币转换。单笔上限约 3,000–8,000 埃镑，银行 ATM 手续费低。</li>
+      <li>现金场景：市场、出租车、小餐馆、骆驼、小费、达哈卜大多数活动。酒店和大一点的店可以刷卡。</li>
+      <li>小费（baksheesh）几乎每项服务都要，备好 10/20/50 埃镑零钱；去银行柜台换零钱（说 "fakka"）。司机、摊贩常说没零钱找。</li>
+      <li>入境携带：埃镑现金每人上限 5,000；外币超过 1 万美元要申报。</li>
+    </ul></details>
+    <details><summary>🚕 打车与交通工具</summary><ul>
+      <li>开罗：<b>Uber / Careem</b>（App 显示价，司机一般不多收），InDrive（自己出价，便宜，但要先注册）。小红书上有人用滴滴国际，也能按 App 价付现金。</li>
+      <li>不坐黑车、不让酒店老板或路人代叫车；上车前谈好总价（含不含过路费、停车费），写下来或录音。</li>
+      <li><b>Go Bus</b>：客服 <a href="tel:19567">19567</a>，go-bus.com 可刷外卡、出电子二维码票。开罗站在解放广场 Abdel Moneim Riad <a class="go" data-q="Go Bus Abdel Moneim Riad Tahrir Cairo" target="_blank" rel="noopener">导航 开罗站</a>，达哈卜站在 El Masbat 街 <a class="go" data-q="Go Bus Dahab El Masbat" target="_blank" rel="noopener">导航 达哈卜站</a>。提前 30 分钟到；免费行李约 2 个中号或 1 个大号，超出的站里可能收 5–100 埃镑现金。登车站以电子票为准。</li>
+      <li>达哈卜镇上：路边皮卡就是出租车，招手谈价，镇内约 50 埃镑/车；也可用 InDrive。去蓝洞、峡谷这类活动都包接送。</li>
+      <li>西奈检查站：每次都要护照原件，交给司机登记，人一般不用下车。</li>
+      <li>Nile Air（NP51）：第三方资料说经济舱托运约 30 kg + 手提 7 kg，以机票为准；在开罗机场<b>可能是 T1</b>（埃及航空在 T3），看机票。</li>
+    </ul></details>
+    <details><summary>🛡️ 安全与防骗</summary><ul>
+      <li>金字塔：走<b>正门</b>（有安检，骗子少），Uber 常把人送到后门（骗子多）。门票只在官网/正门窗口买；有人说"大门关了""必须要导游""你的票有问题"都不理；买票后别把票交给任何人。</li>
+      <li>骆驼、马车：先谈好总价、币种（埃镑还是美元）、时长、包不包下骆驼，最好录下来；常见套路是上骆驼 200、下骆驼再要 600。别把手机交给牵骆驼的人"帮拍"。</li>
+      <li>不接陌生人塞来的手链、头巾；"免费帮忙"之后会要小费。厕所递纸巾的人也会要钱。</li>
+      <li>没菜单、没标价的店先问价；整数常不找零。</li>
+      <li>女生：穿着保守些（过膝、不露肩），清真寺需要过膝裤/裙，女生遮肩。</li>
+      <li>达哈卜整体松弛；夜里别离岸太远浮潜或划船，风大流快。</li>
+      <li>遇到纠缠或敲诈：打旅游警察 <b><a href="tel:126">126</a></b>。</li>
+    </ul></details>
+    <details><summary>☎️ 应急电话 <small>公开官方号码</small></summary><ul>
+      <li>警察 <b><a href="tel:122">122</a></b> · 救护车 <b><a href="tel:123">123</a></b> · 旅游警察 <b><a href="tel:126">126</a></b> · 消防 <b><a href="tel:180">180</a></b></li>
+      <li>中国驻埃及使馆领事保护：<b><a href="tel:+20227363556">+20 2 2736 3556</a></b>；地址 14 Bahgat Aly St, Zamalek, Cairo <a class="go" data-q="Embassy of China Cairo Zamalek" target="_blank" rel="noopener">导航</a></li>
+      <li>外交部全球领事保护热线：<b><a href="tel:+861012308">+86 10 12308</a></b>（24 小时）</li>
+      <li>达哈卜医疗（英国政府医疗名单，号码可能过时）：Dahab Hospital（公立）<a href="tel:0693640208">069 364 0208</a> <a class="go" data-q="Dahab Hospital" target="_blank" rel="noopener">导航 Dahab Hospital</a>；Dahab Medical Care（私立）<a href="tel:0693643000">069 364 3000</a> <a class="go" data-q="Dahab Medical Care" target="_blank" rel="noopener">导航 Dahab Medical Care</a></li>
+      <li>减压舱：达哈卜的减压舱是否在运营<b>不确定</b>，潜水前问潜店最近的减压舱在哪（沙姆有 Hyperbaric Medical Center）。买的旅行保险要<b>包含潜水</b>。</li>
+    </ul></details>
+    <details><summary>🌡️ 天气与穿什么</summary><ul>
+      <li>达哈卜：白天 23–27°C，晚上 15–19°C；海水 11 月约 25°C、12 月约 23°C（浮潜穿 3 mm 湿衣更舒服）；几乎不下雨。日落约 16:45，日出约 06:15。</li>
+      <li>开罗：白天 20 多度，早晚凉；12/1–4 日落约 16:54。</li>
+      <li>西奈山顶日出前：0°C 上下甚至零下，风大 → 羽绒服 + 冲锋衣 + 帽子手套 + 头灯。</li>
+      <li>防晒霜、墨镜、帽子、沙滩鞋或潜水袜、驱蚊、肠胃药。</li>
+    </ul></details>
+    <details><summary>🤿 潜水安全</summary><ul>
+      <li>潜水后：单次潜水至少隔 12 小时、多次/多天潜水至少隔 18 小时再坐飞机（DAN 建议）。我们最后一潜 12/2 下午，回程是 12/3 夜车 + 12/4 晚上航班，没冲突。</li>
+      <li>西奈山约 2,285 m：排在潜水之前（现在是 11/29 夜爬，12/1 才开始潜，OK）。</li>
+      <li>不会游泳的人只做体验潜水 / 穿救生衣浮潜。</li>
+    </ul></details>
+    <details><summary>📱 出发前装好的 App</summary><ul>
+      <li>Google 地图（下载开罗、西奈离线地图）、Google 翻译（下载阿拉伯语离线包）——在阿联酋就装好</li>
+      <li>Uber、Careem、InDrive（最好在家先注册）</li>
+      <li>Go Bus（或用网页）、Booking / Agoda、WhatsApp（埃及商家、司机、民宿都用 WhatsApp）</li>
+      <li>外卖 Talabat（可选）</li>
+    </ul></details>
+  </div>
+</section>
+
+<section style="display:grid;gap:12px" id="food">
+  <h2>吃喝地图 <small>每家都能点「导航」；营业时间出发前在地图上再看一眼</small></h2>
+  <div class="pick"><div>达哈卜整体评价是"能吃就算好"：烤肉、烤鱼、沙威玛最稳；菜咸就跟店员说 "less salt"；饮料奶昔普遍很甜，可以要少糖。很多小店只收现金。猫会来讨吃的，吃完再喂。</div></div>
+  <div class="acts">
+    <details open><summary>🥙 达哈卜 · 本地便宜管饱</summary><ul>
+      <li><b>King Chicken</b> · 烤鸡、沙威玛、混合烤肉、塞馅蔬菜 mahshi；总在排队 · 便宜 <a class="go" data-q="King Chicken Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Al Masri 本地烤肉馆</b>（小红书多人推荐，营业到凌晨 3 点）· 招牌烤羊排、羊腿 <a class="go" data-q="Al Masri Restaurant Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Tango</b>（小红书：连吃三天）· 柜台点单、只收现金，人均 100 多埃镑；塔吉锅（现做要等）、沙威玛、秋葵汤 <a class="go" data-q="Tango Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Yum Yum Falafel</b>（Mashraba）· 炸豆丸子三明治 25 埃镑左右，午饭时满座 <a class="go" data-q="Yum Yum Falafel Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Kosari Station</b>（Assalah 广场）· 埃及国民主食 koshary <a class="go" data-q="Kosari Station Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Al Sharkawy</b>（Assalah 广场，Ghazala 超市对面）· 烤鸡、烤肉丸 <a class="go" data-q="Al Sharkawy Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Shams</b>（Mashraba 海边）· 埃及早餐 foul（蚕豆泥），晚上有火舞 <a class="go" data-q="Shams Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li>Assalah 广场 11:11 咖啡旁有个 24 小时炸豆丸子摊，约 25 埃镑</li>
+    </ul></details>
+    <details><summary>🐟 达哈卜 · 海鲜</summary><ul>
+      <li><b>Darwish</b> / <b>Miami</b>（挨着）· 一桌点鱼虾鱿鱼螃蟹分着吃，约 €10/人；常要等 1 小时，坐下先点 <a class="go" data-q="Darwish Seafood Dahab" target="_blank" rel="noopener">导航 Darwish</a> <a class="go" data-q="Miami Restaurant Dahab" target="_blank" rel="noopener">导航 Miami</a></li>
+      <li><b>Shark Restaurant</b>（Masbat 海边）· 很新鲜的烤鱼和海鲜拼盘，送热馕和一桌小菜；小红书说人均约 1,000 埃镑，奶昔很甜 <a class="go" data-q="Shark Restaurant Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Ali Baba</b>（Masbat）· 海景海鲜拼盘，偏贵 <a class="go" data-q="Ali Baba Restaurant Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Ramez &amp; Paola</b>（Mashraba）· 海鲜、意面、披萨 <a class="go" data-q="Ramez and Paola Dahab" target="_blank" rel="noopener">导航</a></li>
+    </ul></details>
+    <details><summary>☕ 达哈卜 · 早餐 / 咖啡 / 面包</summary><ul>
+      <li><b>Ralph's German Bakery</b> · 可颂、肉桂卷、大份早餐，按时开门很早；晚上 9 点左右也能买可颂 <a class="go" data-q="Ralph's German Bakery Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>11:11 Avenue</b>（Assalah 广场旁）· 精品咖啡、酸面包、鸡肉饭、牛油果三明治；早午餐 12:30–13:00 收 <a class="go" data-q="11:11 Avenue Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Everyday Cafe</b>（ORCA 潜店隔壁，小红书 126 赞）· 肉桂卷、墨西哥鸡肉 taco、椰子冰咖啡，晚上有乐队；有服务费；同名店多，认准地图 <a class="go" data-q="Every Day Cafe Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Tim's Munch</b>（Fanar 街屋顶，潜店旁看得到海）· 咸法式吐司、香蕉燕麦松饼、Spanish coffee，约 200 埃镑；15:00 最后点单 <a class="go" data-q="Tim's Munch Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Schoenemanns Café</b>（Lighthouse 路）· 超大份早餐、真面包；周五休息 <a class="go" data-q="Schoenemanns Cafe Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Coffee Wheel</b>（Schoenemanns 对面）· 可颂、海景，便宜 <a class="go" data-q="Coffee Wheel Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Cafe del Sur</b> · 被评为镇上最好喝的咖啡之一 <a class="go" data-q="Cafe Del Sur Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Bayside Eatery</b>（El Fanar 街 78 号）· 早餐 <a class="go" data-q="Bayside Eatery Dahab" target="_blank" rel="noopener">导航</a></li>
+    </ul></details>
+    <details><summary>🥢 达哈卜 · 中餐 / 亚洲菜 <small>想念中国胃时</small></summary><ul>
+      <li><b>上海餐厅</b>（小红书："达哈卜掌管中餐的神"）· 担担面、重庆小面、蚝油生菜；中餐人均约 70 元，偏贵 <a class="go" data-q="Shanghai Restaurant Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>The Kitchen</b>（Masbat，Jackie's 和 Ghazala 超市附近）· 饺子、宫保、腰果鸡、炒饭 <a class="go" data-q="The Kitchen Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Dragon House</b> · 亚洲菜（小红书游记提到"还吃 Dragon house"）<a class="go" data-q="Dragon House Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Lemongrass</b>（Lighthouse 中心）· 泰式炒河粉、芒果沙拉 <a class="go" data-q="Lemongrass Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Namaste</b>（El Fanar 街）· 印度菜，黄油鸡、豆子咖喱、馕 <a class="go" data-q="Namaste Dahab" target="_blank" rel="noopener">导航</a></li>
+    </ul></details>
+    <details><summary>🥤 达哈卜 · 果汁 / 甜品 / 晚上</summary><ul>
+      <li><b>Fresh Juice</b>（Lighthouse 路）· 甘蔗汁 <a class="go" data-q="Fresh Juice Dahab" target="_blank" rel="noopener">导航</a>；潜店旁的小果汁店：草莓、牛油果汁像冰沙，米布丁好吃</li>
+      <li>番石榴（guava）lassi、草莓 lassi 是小红书高频好评</li>
+      <li><b>Yalla Bar</b>（Lighthouse）· 海景、现场音乐 <a class="go" data-q="Yalla Bar Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Blue Beach</b>（Lighthouse 路口 5 分钟）· 桌子摆在水边，多数晚上有 DJ <a class="go" data-q="Blue Beach Bar Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Jackie's</b>（桥前海滨路）· 墨西哥菜、萨尔萨之夜 <a class="go" data-q="Jackie's Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Vallee</b>（海边）· 懒人沙发、早午餐约 350 埃镑，偶尔露天电影 <a class="go" data-q="Vallee Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Sarda</b>（镇尽头，去观景台的步道口）· 椰枣咖啡、埃及早餐、柴火披萨 <a class="go" data-q="Sarda Dahab" target="_blank" rel="noopener">导航</a></li>
+      <li>买菜做饭：<b>Assalah 菜市场</b> <a class="go" data-q="Assalah Market Dahab" target="_blank" rel="noopener">导航 菜市场</a>、<b>Ghazala 超市</b> <a class="go" data-q="Ghazala Supermarket Dahab" target="_blank" rel="noopener">导航 超市</a></li>
+    </ul></details>
+    <details><summary>🗿 吉萨 · 11/26</summary><ul>
+      <li><b>9 Pyramids Lounge</b>（景区高台上）· 视野无遮挡，08:00–17:00，菜一般，适合午饭/喝东西（要景区门票）<a class="go" data-q="9 Pyramids Lounge" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Khufu's</b>（景区内，2026 年被评为埃及最好的餐厅）· 套餐、贵、要提前订，17:00 关；要景区门票 <a class="go" data-q="Khufu's Restaurant Giza" target="_blank" rel="noopener">导航</a></li>
+      <li><b>139 Pavilion</b>（Mena House 酒店）· 露天、正对金字塔，24 小时，酒店价 <a class="go" data-q="139 Pavilion Marriott Mena House" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Pizza Hut 金字塔阳台</b>（在 KFC 楼上）· 便宜，能看声光秀 <a class="go" data-q="Pizza Hut Pyramids Giza" target="_blank" rel="noopener">导航</a></li>
+      <li>晚饭最省事：在住的景观酒店屋顶吃</li>
+    </ul></details>
+    <details><summary>🏙️ 开罗市中心 · 12/4（周五）</summary><ul>
+      <li><b>Koshary Abou Tarek</b>（Champollion 街 16 号）· 开罗最有名的 koshary，30–35 埃镑起；12:30 前去不用排队 <a class="go" data-q="Koshary Abou Tarek" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Felfela</b>（Hoda Shaarawi 街 15 号，1959 年开）· foul、taameya 炸豆饼 <a class="go" data-q="Felfela Restaurant Cairo" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Zooba</b>（连锁）· 改良街头小吃：鸡肉沙威玛饭、辣牛肉饼 hawawshi、芭乐汁 <a class="go" data-q="Zooba Cairo" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Beggah</b>（小红书：满屋本地人）· 洋葱烩牛肉、混合烤牛肉；卫生一般，只会阿拉伯语 <a class="go" data-q="Beggah Cairo" target="_blank" rel="noopener">导航</a></li>
+      <li><b>Malfoof</b>（解放广场）· 本地人晚上吃米布丁的地方，烤米布丁约 35 埃镑 <a class="go" data-q="Malfoof Tahrir Cairo" target="_blank" rel="noopener">导航</a></li>
+      <li><b>El Fishawy Café</b>（汗·哈利利里，百年老茶馆）· 薄荷茶、土耳其咖啡 <a class="go" data-q="El Fishawy Cafe" target="_blank" rel="noopener">导航</a></li>
+      <li>没有菜单的小店先问价；小红书提醒有人两杯咖啡被收 200 埃镑</li>
     </ul></details>
   </div>
 </section>
 
 <section style="display:grid;gap:12px" id="dahab">
-  <h2>达哈卜能玩啥 <small>小红书 20 篇游记 + 网上报价整理，2025–26 参考价，现场能砍 · 1 元 ≈ 6.8 埃镑，1 美元 ≈ 50 埃镑</small></h2>
+  <h2>达哈卜能玩啥 <small>小红书 20 篇游记 + 网上报价整理，2025–26 参考价，现场能砍 · 1 元 ≈ 7.5 埃镑，1 美元 ≈ 53.5 埃镑（11 月中）</small></h2>
   <div class="pick">
     <div><b>必选：</b>岸边浮潜（灯塔 + 鳗鱼花园）、自己去蓝洞、贝都因篝火晚会、观景台看日落</div>
     <div><b>二选一：</b>体验潜水 或 风筝冲浪 · <b>挑战：</b>夜爬西奈山 · <b>轻松：</b>骑马 / ATV、攀岩、Abu Galum</div>
@@ -234,30 +377,30 @@ footer{font-size:.78rem;color:var(--muted)}
   <div class="acts">
     <details open><summary>🐠 水里</summary><ul>
       <li><b>岸边浮潜</b>（最推荐，零门槛） <span class="p">装备 ≈150 埃镑/天</span>
-        <span class="n">不用出海，岸边下水就有珊瑚和鱼群。灯塔 Lighthouse（主街）、鳗鱼花园 Eel Garden（白沙地上的花园鳗）、Islands（珊瑚迷宫，生态最好）。去主街大店租，路边小摊要 250–300；带潜水袜或沙滩鞋，珊瑚很扎。</span></li>
+        <span class="n">不用出海，岸边下水就有珊瑚和鱼群。灯塔 Lighthouse（主街）、鳗鱼花园 Eel Garden（白沙地上的花园鳗）、Islands（珊瑚迷宫，生态最好）。去主街大店租，路边小摊要 250–300；带潜水袜或沙滩鞋，珊瑚很扎。 <a class="go" data-q="Lighthouse Reef Dahab" target="_blank" rel="noopener">导航 灯塔</a> <a class="go" data-q="Eel Garden Dahab" target="_blank" rel="noopener">导航 鳗鱼花园</a> <a class="go" data-q="Islands Dive Site Dahab" target="_blank" rel="noopener">导航 Islands</a></span></li>
       <li><b>蓝洞 Blue Hole + 峡谷 Canyon</b> <span class="p">门票约 $20–25</span>
-        <span class="n">潜水圣地，浮潜也能看蓝洞边缘。<span class="w">便宜的"蓝洞一日游"口碑差</span>（小船超载、装备另收、午餐落空），自己打车去、现场租装备找向导更好；有团把"三池"当蓝洞卖，问清楚。</span></li>
+        <span class="n">潜水圣地，浮潜也能看蓝洞边缘。<span class="w">便宜的"蓝洞一日游"口碑差</span>（小船超载、装备另收、午餐落空），自己打车去、现场租装备找向导更好；有团把"三池"当蓝洞卖，问清楚。 <a class="go" data-q="Blue Hole Dahab" target="_blank" rel="noopener">导航 蓝洞</a> <a class="go" data-q="Canyon Dive Site Dahab" target="_blank" rel="noopener">导航 峡谷</a></span></li>
       <li><b>体验潜水 / 考证</b> <span class="p">体验 ≈€25 · OW+AOW $300–350</span>
-        <span class="n">体验潜不用证，教练带下去。考证 4–5 天（1 对 2），有 AOW 才能潜蓝洞/峡谷，fun dive 约 $20/潜。笔记里提到的潜店：Octopus World、Fish &amp; Friends、Orca。</span></li>
+        <span class="n">体验潜不用证，教练带下去。考证 4–5 天（1 对 2），有 AOW 才能潜蓝洞/峡谷，fun dive 约 $20/潜。笔记和网上常提到的潜店：Octopus World <a class="go" data-q="Octopus World Dahab" target="_blank" rel="noopener">导航</a>、Fish &amp; Friends（最便宜）<a class="go" data-q="Fish and Friends Dahab" target="_blank" rel="noopener">导航</a>、Orca（有中文教练）<a class="go" data-q="Orca Dive Club Dahab" target="_blank" rel="noopener">导航</a>、Dahab Divers Lodge（PADI 五星）<a class="go" data-q="Dahab Divers Lodge" target="_blank" rel="noopener">导航</a>、Bedouin Divers <a class="go" data-q="Bedouin Divers Dahab" target="_blank" rel="noopener">导航</a>、Circle Divers <a class="go" data-q="Circle Divers Dahab" target="_blank" rel="noopener">导航</a>；镇上 50 多家，订前看最新谷歌评价。</span></li>
       <li><b>风筝冲浪 Kitesurf</b> <span class="p">≈$50 / 2 小时（1 对 1）</span>
-        <span class="n">达哈卜招牌，学 2–3 天能站起来；私下找教练比风冲基地便宜。看风，没风上不了。</span></li>
+        <span class="n">达哈卜招牌，学 2–3 天能站起来；私下找教练比风冲基地便宜。看风，没风上不了。主海湾禁止风筝冲浪，在泻湖 Lagoon 学；大的营地有 Harry Nass <a class="go" data-q="Harry Nass Dahab" target="_blank" rel="noopener">导航</a>、Happy Kite <a class="go" data-q="Happy Kite Dahab" target="_blank" rel="noopener">导航</a>。</span></li>
       <li><b>皮划艇 / 桨板 SUP</b> <span class="p">200–300 埃镑/小时</span>
         <span class="n">傍晚划出去看日落；晚上风大流快，别离岸太远。</span></li>
     </ul></details>
     <details><summary>⛰️ 陆上</summary><ul>
       <li><b>夜爬西奈山看日出</b> <span class="p">800–1250 埃镑</span>
-        <span class="n">晚 10 点接，凌晨开爬 3–4 小时，5 点多日出，上午回。<span class="w">12 月山顶零下</span>：羽绒服 + 冲锋衣 + 头灯 + 零食，毯子可租 100 埃镑。评价两极："值爆了" vs "最踩雷"。</span></li>
+        <span class="n">晚 10 点接，凌晨开爬 3–4 小时，5 点多日出，上午回。<span class="w">12 月山顶零下</span>：羽绒服 + 冲锋衣 + 头灯 + 零食，毯子可租 100 埃镑。评价两极："值爆了" vs "最踩雷"。 <a class="go" data-q="Mount Sinai Egypt" target="_blank" rel="noopener">导航</a></span></li>
       <li><b>野外攀岩</b> <span class="p">$20–30</span>
-        <span class="n">半天，含接送、装备、教练、水果，新手友好。详见下面「第一次野攀」。</span></li>
+        <span class="n">半天，含接送、装备、教练、水果，新手友好。详见下面「第一次野攀」。 <a class="go" data-q="Wadi Gnai Dahab" target="_blank" rel="noopener">导航</a></span></li>
       <li><b>彩色峡谷 Coloured Canyon</b> <span class="p">≈1300 埃镑</span>
-        <span class="n">含接送和午餐，峡谷里爬上爬下，12 月不热正合适。</span></li>
+        <span class="n">含接送和午餐，峡谷里爬上爬下，12 月不热正合适。 <a class="go" data-q="Coloured Canyon Nuweiba" target="_blank" rel="noopener">导航</a></span></li>
       <li><b>骑马 / 骆驼 / ATV 冲沙</b> <span class="p">骑马 ≈500 埃镑/小时</span>
-        <span class="n">海边夕阳骑马很出片；打包一日游（三池 + ATV + 浮潜 + 骆驼 + 骑马）≈2500 埃镑。</span></li>
+        <span class="n">海边夕阳骑马很出片；打包一日游（三池 + ATV + 浮潜 + 骆驼 + 骑马）≈2500 埃镑。 <a class="go" data-q="Three Pools Dahab" target="_blank" rel="noopener">导航</a></span></li>
       <li><b>Ras Abu Galum 保护区</b> <span class="p">$30–60</span>
-        <span class="n">坐船或骑骆驼进去的贝都因海湾，浮潜 + 海边午饭，也能住一晚看星空。</span></li>
+        <span class="n">坐船或骑骆驼进去的贝都因海湾，浮潜 + 海边午饭，也能住一晚看星空。 <a class="go" data-q="Ras Abu Galum Protectorate" target="_blank" rel="noopener">导航</a></span></li>
     </ul></details>
     <details><summary>🧗 第一次野攀 <small>两位攀岩爱好者看这里</small></summary><ul>
-      <li><b>岩场：Wadi Qnai 峡谷</b> <span class="p">离镇约 15 km</span>
+      <li><b>岩场：Wadi Qnai 峡谷</b> <span class="p">离镇约 15 km</span> <a class="go" data-q="Wadi Gnai Dahab" target="_blank" rel="noopener">导航</a>
         <span class="n">花岗岩，攀岩季 10–4 月（11–3 月最好），12 月正合适。约 100 条线，3 级到 7b/c（Spider Wall）。新手区 Middle Qnai（短线顶绳）、Waterfalls（离路最近）；线路最多、最出片的是 Camel Canyon。岩面偏滑、脚点难踩，和室内手感差别大。</span></li>
       <li><b>请向导（第一次强烈建议）</b> <span class="p">$20–30/人</span>
         <span class="n">约 1000–1500 埃镑，可砍价。含酒店接送、攀岩鞋、安全带、绳子、水果，半天。向导先挂好顶绳，摔了只是挂在绳上，很安全；有经验可以试先锋。一般 1 对 1 或 1 对 2，新手 4a–5b，有室内基础可挑战 6a–6c。</span></li>
@@ -273,9 +416,10 @@ footer{font-size:.78rem;color:var(--muted)}
         <span class="n">"彩色峡谷 / 红白峡谷 / Wadi Wishwash"是徒步加手脚并用攀爬，不用绳子，全员都能去（一日游 1500–1750 埃镑）。</span></li>
     </ul></details>
     <details><summary>🌅 免费 / 很便宜</summary><ul>
-      <li><b>观景台</b>：爬 10 分钟看全镇和红海日落（有人收 50 埃镑茶水费）</li>
+      <li><b>日出日落</b>：达哈卜面朝东边的亚喀巴湾，<b>太阳是落在身后的山里</b>，傍晚海面和对岸沙特的山会染成粉紫色；想看太阳从海上升起就 06:15 左右早起。看日落最好爬观景台。</li>
+      <li><b>观景台</b>：爬 10 分钟俯瞰全镇和红海，看日落最好的地方（有人收 50 埃镑茶水费） <a class="go" data-q="Footpath to Viewpoint Dahab" target="_blank" rel="noopener">导航</a></li>
       <li><b>贝都因篝火晚会</b> <span class="p">≈200 埃镑含接送</span><span class="n">音乐、旋转舞、打铁花，晚上 11 点最热闹。</span></li>
-      <li><b>Magic Lake</b>：日落后当地人海边篝火 BBQ</li>
+      <li><b>Magic Lake</b>：日落后当地人海边篝火 BBQ <a class="go" data-q="Magic Lake Dahab" target="_blank" rel="noopener">导航</a></li>
       <li>海边步行桥、咖啡馆发呆、看星空；主街有咖啡馆晚上有乐队</li>
       <li>蓝洞旁老爷爷的手工沙画瓶，可以写名字</li>
     </ul></details>
@@ -283,6 +427,7 @@ footer{font-size:.78rem;color:var(--muted)}
       <li>本地烤肉、烤鸡便宜管饱；Koshary 平民面</li>
       <li>有中餐，偏贵（人均约 70 元）</li>
       <li>German Bakery 早餐靠谱，按时开门</li>
+      <li>更多店见上面「吃喝地图」</li>
     </ul></details>
     <details><summary>💡 实用</summary><ul>
       <li>路上的皮卡就是出租车，招手谈价（3 km 约 50 埃镑/车）；InDrive 也能用</li>
@@ -293,13 +438,45 @@ footer{font-size:.78rem;color:var(--muted)}
   </div>
 </section>
 
-<section style="display:grid;gap:10px">
+<section style="display:grid;gap:10px" id="qs">
   <h2>待讨论</h2>
   <ol class="qs">
     <li>达哈卜是考 PADI Open Water（3–4 天），还是只做体验潜水和浮潜？西奈山（约 2,285 米）要排在潜水之前，或者最后一潜后至少隔 24 小时。</li>
     <li>12/3 白天：彩色峡谷，还是在达哈卜海边放空？</li>
     <li>12/4 开罗一天要不要订个钟点房（day use），下夜车先洗澡寄行李？</li>
   </ol>
+</section>
+
+<section style="display:grid;gap:12px" id="stay">
+  <h2>住哪 <small>候选，价格是估计，订前看实时价；都订可免费取消的</small></h2>
+  <div class="pick"><div>订之前用 WhatsApp 问清四件事：① 能不能早到/寄存行李 ② 有没有早餐打包（吉萨那晚 05:30 出发）③ 自来水是淡水还是咸水 ④ 12/3 退房后能不能寄存到晚上 21:00 坐车。达哈卜民宿大多能代约沙姆接机。</div></div>
+  <div class="acts">
+    <details open><summary>🗿 吉萨 · 11/26 一晚 <small>金字塔景观</small></summary><ul>
+      <li><b>Mamlouk Pyramids Hotel</b> · <span class="p">约 $50–90/间</span> · Trip.com 9.0（126 条）· 早餐自助 07:00 开始（太晚，要打包盒）；可付费接送机约 $20/人 <a class="go" data-q="Mamlouk Pyramids Hotel" target="_blank" rel="noopener">导航</a> <a class="go" data-bk="Mamlouk Pyramids Hotel Giza" target="_blank" rel="noopener">Booking</a></li>
+      <li><b>Hayat Pyramids View Hotel</b> · <span class="p">约 $35–70/间</span> · 8.1–8.5 · 走到金字塔约 3 分钟 <a class="go" data-q="Hayat Pyramids View Hotel" target="_blank" rel="noopener">导航</a> <a class="go" data-bk="Hayat Pyramids View Hotel" target="_blank" rel="noopener">Booking</a></li>
+      <li><b>Panorama View Pyramids</b> · 小红书：露台正对狮身人面像，有人 7 月订到 $35/晚，前台经理英语好 <a class="go" data-q="Panorama View Pyramids Hotel Giza" target="_blank" rel="noopener">导航</a> <a class="go" data-bk="Panorama View Pyramids" target="_blank" rel="noopener">Booking</a></li>
+      <li><b>Rosetta Pyramids Inn</b> · 小红书有入住分享 <a class="go" data-q="Rosetta Pyramids Inn" target="_blank" rel="noopener">导航</a> <a class="go" data-bk="Rosetta Pyramids Inn" target="_blank" rel="noopener">Booking</a></li>
+      <li><b>Atlantis Pyramids Inn</b> · <span class="p">约 $30–60/间</span> · 有屋顶露台，没查到评分，订前看评价 <a class="go" data-q="Atlantis Pyramids Inn" target="_blank" rel="noopener">导航</a> <a class="go" data-bk="Atlantis Pyramids Inn" target="_blank" rel="noopener">Booking</a></li>
+      <li>提示：这一带是 Nazlet El-Semman；入住一般 14:00，早到先问能否寄存行李、先用早餐/洗澡；到开罗机场约 50–60 分钟，11/27 定 05:00–05:30 的车。</li>
+    </ul></details>
+    <details><summary>🌊 达哈卜 · 11/27–12/3 六晚</summary><ul>
+      <li><b>Gina Motel Dahab</b>（Masbat）· 小红书多人推荐、很多中国人住，<span class="p">约 ¥145/间/晚</span>（平台和前台价不同，可谈）；有厨房、海景天台、猫；无泳池无早餐；离海边步行 6–11 分钟；某平台 9.4（242 条） <a class="go" data-q="Gina Motel Dahab" target="_blank" rel="noopener">导航</a> <a class="go" data-bk="Gina Motel Dahab" target="_blank" rel="noopener">Booking</a></li>
+      <li><b>Dahab Home</b>（离主街和潜店很近）· 小红书：单间<span class="p">约 ¥150/晚</span>，<b>淡水</b>、24 小时热水，有早餐，老板很热心，楼顶海景 <a class="go" data-q="Dahab Home Dahab" target="_blank" rel="noopener">导航</a> <a class="go" data-bk="Dahab Home" target="_blank" rel="noopener">Booking</a></li>
+      <li><b>Dahab Divers</b>（Masbat / El Fanar 街，潜水度假酒店）· 有泳池、海边、含早餐；价格波动大（Kayak 显示 $62 起），要实时问价；8.9（203 条） <a class="go" data-q="Dahab Divers Hotel" target="_blank" rel="noopener">导航</a> <a class="go" data-bk="Dahab Divers" target="_blank" rel="noopener">Booking</a></li>
+      <li><b>The Bridge Dahab</b>（Masbat）· 有泳池、花园；<span class="p">约 $40–80/间（估计）</span> <a class="go" data-q="The Bridge Dahab" target="_blank" rel="noopener">导航</a> <a class="go" data-bk="The Bridge Dahab" target="_blank" rel="noopener">Booking</a></li>
+      <li><b>Yasmina Hotel</b>（El Masbat 街）· 有泳池；<span class="p">约 $35–70/间（估计）</span> <a class="go" data-q="Yasmina Hotel Dahab" target="_blank" rel="noopener">导航</a> <a class="go" data-bk="Yasmina Hotel Dahab" target="_blank" rel="noopener">Booking</a></li>
+      <li><b>Ira Hostel</b> · 小红书 130 赞，氛围好、有露台和厨房，离海约 1 km；有双人间（问是否独卫）；地图定位不准，导航 Tranquilo Boutique Hostel 再往前走 <a class="go" data-q="Tranquilo Boutique Hostel Dahab" target="_blank" rel="noopener">导航 Tranquilo</a></li>
+      <li><b>Deep Blue Divers Hostel</b>（Masbat）· 8.1（552 条），热闹、便宜，可能吵 <a class="go" data-q="Deep Blue Divers Dahab" target="_blank" rel="noopener">导航</a> <a class="go" data-bk="Deep Blue Divers Dahab" target="_blank" rel="noopener">Booking</a></li>
+      <li><b>Assalah 两居室公寓</b>（本地居民区，靠菜市场，最便宜、能做饭）· <span class="p">约 $40–90/晚（估计）</span>，Booking/Airbnb 搜 "2 bedroom apartment Dahab Assalah" <a class="go" data-bk="Assalah Dahab apartment" target="_blank" rel="noopener">Booking</a></li>
+      <li>区域怎么选：<b>Lighthouse / Masbat</b> = 最热闹，餐厅潜店集中，岸边就能浮潜，离 Go Bus 站近（第一次来首选）；<b>Eel Garden</b> = 安静、海水清；<b>Assalah</b> = 本地生活、菜市场、能做饭；<b>Lagoon</b> = 度假酒店和风筝冲浪营地，离镇中心远。</li>
+      <li>达哈卜自来水多为咸水或淡化水，<b>别直接喝</b>，刷牙也用瓶装水；订前问清有没有淡水热水。</li>
+    </ul></details>
+    <details><summary>🏙️ 开罗 · 12/4 白天 <small>07:00 下夜车 → 19:45 去机场</small></summary><ul>
+      <li>网上预约行李寄存：<b>Nannybag</b>（市中心/拉美西斯，约 202 埃镑/天）、<b>Radical Storage</b>（Talaat Harb 广场附近，只能在线订，不收现金）、Stasher / LuggageHero</li>
+      <li>钟点房：问解放广场附近小旅馆能否 day use 或付费提前入住洗澡，比如 <b>Meramees Hostel</b>（到埃及博物馆步行约 10 分钟）<a class="go" data-q="Meramees Hostel Cairo" target="_blank" rel="noopener">导航</a></li>
+      <li>小红书经验：住解放广场附近最方便，去哪都好打车；晚上路边喝咖啡吃米布丁很舒服。</li>
+    </ul></details>
+  </div>
 </section>
 
 <footer>不放订单号、护照号等敏感信息。行程有变化，告诉 Claude 一句就会更新这个页面，链接不变。</footer>
@@ -373,7 +550,7 @@ const DAYS = [
 ];
 const TODO = [
  ["ms","订埃及航空往返 MS917 / MS916（4 人，不能改期）","先办"],
- ["visa","4 人办埃及电子签（visa2egypt.gov.eg）","先办"],
+ ["visa","签证：出发前办电子签 $25（visa2egypt.gov.eg），或落地买 $30 纸质签（备干净美元现金）","先办"],
  ["flight","订 11/27 Nile Air NP51 开罗→沙姆（4 人，看托运行李额）","先办"],
  ["van","约 11/27 沙姆机场→达哈卜 6–7 座车（4 人 + 8 件大行李）","先办"],
  ["bus","订 Go Bus 12/3 21:00 达哈卜→开罗（4 张，go-bus.com）","先办"],
@@ -386,7 +563,7 @@ const TODO = [
  ["gem","网上订大埃及博物馆 11/26 下午时段票（visit-gem.com，1,830 埃镑/人，现场不卖）","尽快"],
  ["ins","买旅行保险（含潜水）",""],
  ["cash","备美元现金，小费和签证用",""],
- ["sim","买埃及 eSIM",""],
+ ["sim","电话卡：落地 T3 取行李处买（e& 只收现金），或出发前买 eSIM",""],
  ["pack","打包：厚外套、头灯、防晒、泳衣",""]
 ];
 
@@ -457,7 +634,11 @@ function renderTodo(){
   document.getElementById('prog').textContent=`${n} / ${TODO.length}`;
 }
 document.getElementById('todo').addEventListener('change',e=>{const id=e.target.dataset.id;if(!id)return;store.set('eg26-'+id,e.target.checked?'1':'0');renderTodo()});
-renderDays();renderTodo();tick();setInterval(tick,30000);
+function fillLinks(){
+  document.querySelectorAll('[data-q]').forEach(a=>{a.href=Q(a.dataset.q)});
+  document.querySelectorAll('[data-bk]').forEach(a=>{a.href="https://www.booking.com/searchresults.html?ss="+encodeURIComponent(a.dataset.bk)});
+}
+fillLinks();renderDays();renderTodo();tick();setInterval(tick,30000);
 </script>
 
 </body>
