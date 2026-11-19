@@ -161,7 +161,7 @@ footer{font-size:.78rem;color:var(--muted)}
     <thead><tr><th>项目</th><th>说明</th><th class="r">单人</th><th class="r">4 人</th></tr></thead>
     <tbody>
       <tr><td>埃及航空往返</td><td>MS917 11/26 去 · MS916 12/4 回；去程托运 2×23kg，回程 1×23kg；不得改期，退票费 488 元起（携程报价）</td><td class="r">¥2,235</td><td class="r">¥8,940</td></tr>
-      <tr><td>大巴 开罗 ⇄ 达哈卜</td><td>Go Bus / East Delta 往返，票价待查</td><td class="r">待定</td><td class="r">待定</td></tr>
+      <tr><td>大巴 开罗 ⇄ 达哈卜</td><td>Go Bus 官网 11/19 实时价：去程 11/27 09:30 Elite 1000 埃镑 + 回程 12/3 21:00 Super Go D 680 埃镑（回程改坐 23:30 Elite 则两程都是 1000，单人 ≈¥294）。解放广场 ⇄ 达哈卜 El Masbat 街，go-bus.com 可刷外卡</td><td class="r">≈¥247</td><td class="r">≈¥988</td></tr>
       <tr><td>备选：4 人包车</td><td>开罗 ⇄ 达哈卜带司机，单程 7–8 小时；待询价</td><td class="r">—</td><td class="r">待定</td></tr>
       <tr><td>埃及电子签</td><td>visa2egypt.gov.eg，约 25 美元</td><td class="r">≈¥180</td><td class="r">≈¥720</td></tr>
     </tbody>
@@ -263,10 +263,10 @@ const DAYS = [
    {t:"18:30", tz:"+02:00", what:"晚饭，看金字塔夜景，早点睡", note:"凌晨就起床了，第二天一早还要赶车"}
  ]},
  {d:"2026-11-27", w:"周五", title:"白天大巴去达哈卜", where:"达哈卜", items:[
-   {t:"06:30", tz:"+02:00", what:"退房，打车去大巴站", note:"吉萨到市区车站约 40 分钟", place:"Go Bus Tahrir Cairo"},
-   {t:"07:30", tz:"+02:00", what:"大巴 开罗 → 达哈卜", note:"Go Bus / East Delta 早班，约 10 小时；护照随身，沿途检查站要查；班次以订票为准", tag:"book", ev:true},
-   {t:"17:30", tz:"+02:00", what:"到达哈卜，打车去住处", place:"Dahab bus station"},
-   {t:"19:00", tz:"+02:00", what:"Lighthouse 区海边晚饭", place:"Lighthouse Dahab"}
+   {t:"08:00", tz:"+02:00", what:"退房，打车去解放广场 Go Bus 站", note:"吉萨到解放广场约 40 分钟，提前 30 分钟到站", place:"Go Bus Abdel Moneim Riad Tahrir Cairo"},
+   {t:"09:30", tz:"+02:00", what:"Go Bus Elite 开罗 → 达哈卜", note:"1000 埃镑/人，标称 10 小时，检查站可能多 1–2 小时；护照原件随身。备选：08:00 / 10:00 GoMini 小巴（620–651 埃镑）、13:00 Business DD（950）", tag:"book", ev:true},
+   {t:"19:30", tz:"+02:00", what:"到达哈卜 El Masbat 街，打车去住处", place:"Go Bus Dahab El Masbat"},
+   {t:"20:30", tz:"+02:00", what:"Lighthouse 区海边晚饭", place:"Lighthouse Dahab"}
  ]},
  {d:"2026-11-28", w:"周六", title:"达哈卜第一天：浮潜试水", where:"达哈卜", items:[
    {t:"09:00", tz:"+02:00", what:"睡到自然醒，海边早饭"},
@@ -298,7 +298,7 @@ const DAYS = [
  {d:"2026-12-03", w:"周四", title:"彩色峡谷，夜车回开罗", where:"夜车上", items:[
    {t:"08:00", tz:"+02:00", what:"可选：彩色峡谷", note:"半日游；或在海边放空", place:"Colored Canyon Sinai", tag:"book"},
    {t:"12:00", tz:"+02:00", what:"退房，行李寄存"},
-   {t:"21:00", tz:"+02:00", what:"夜班大巴 达哈卜 → 开罗", note:"约 10 小时，早上 7 点左右到", tag:"book", place:"Dahab bus station", ev:true}
+   {t:"21:00", tz:"+02:00", what:"Go Bus 夜车 达哈卜 → 开罗", note:"Super Go D 680 埃镑/人，标称 10 小时，约 07:00 到解放广场。想舒服点：23:30 Elite（1000 埃镑），约 09:30 到", tag:"book", place:"Go Bus Dahab El Masbat", ev:true}
  ]},
  {d:"2026-12-04", w:"周五", title:"开罗老城一整天，深夜回阿布扎比", where:"红眼航班", items:[
    {t:"07:00", tz:"+02:00", what:"大巴到开罗，早饭", note:"可订市中心钟点房洗澡、寄行李", place:"Downtown Cairo"},
@@ -316,7 +316,7 @@ const DAYS = [
 const TODO = [
  ["ms","订埃及航空往返 MS917 / MS916（4 人，不能改期）","先办"],
  ["visa","4 人办埃及电子签（visa2egypt.gov.eg）","先办"],
- ["bus","订大巴：11/27 开罗→达哈卜早班、12/3 达哈卜→开罗夜车（各 4 张）","先办"],
+ ["bus","订 Go Bus：11/27 09:30 Elite 开罗→达哈卜、12/3 21:00 达哈卜→开罗（各 4 张，go-bus.com）","先办"],
  ["giza","订吉萨酒店 1 晚（11/26），问能否早入住","尽快"],
  ["dahab","订达哈卜住宿 6 晚（11/27–12/3）","尽快"],
  ["dayroom","可选：12/4 开罗市中心钟点房",""],
