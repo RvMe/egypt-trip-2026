@@ -285,12 +285,12 @@ footer{font-size:.78rem;color:var(--muted)}
     <details><summary>🌡️ 天气与穿什么</summary><ul>
       <li>达哈卜：白天 23–27°C，晚上 15–19°C；海水 11 月约 25°C、12 月约 23°C（浮潜穿 3 mm 湿衣更舒服）；几乎不下雨。日落约 16:45，日出约 06:15。</li>
       <li>开罗：白天 20 多度，早晚凉；12/1–4 日落约 16:54。</li>
-      <li>西奈山顶日出前：0°C 上下甚至零下，风大 → 羽绒服 + 冲锋衣 + 帽子手套 + 头灯。</li>
+      <li>西奈山顶日落后：气温很快掉到 0°C 上下，风大，还要摸黑下山 → 羽绒服 + 冲锋衣 + 帽子手套 + 头灯。</li>
       <li>防晒霜、墨镜、帽子、沙滩鞋或潜水袜、驱蚊、肠胃药。</li>
     </ul></details>
     <details><summary>🤿 潜水安全</summary><ul>
       <li>潜水后：单次潜水至少隔 12 小时、多次/多天潜水至少隔 18 小时再坐飞机（DAN 建议）。我们最后一潜 12/2 下午，回程是 12/3 夜车 + 12/4 晚上航班，没冲突。</li>
-      <li>西奈山约 2,285 m：排在潜水之前（现在是 11/29 夜爬，12/1 才开始潜，OK）。</li>
+      <li>西奈山约 2,285 m：排在潜水之前（11/30 上山，12/1 才潜，OK）；潜完到 12/4 晚上的飞机隔了三天多。</li>
       <li>不会游泳的人只做体验潜水 / 穿救生衣浮潜。</li>
     </ul></details>
     <details><summary>📱 出发前装好的 App</summary><ul>
@@ -371,8 +371,8 @@ footer{font-size:.78rem;color:var(--muted)}
 <section style="display:grid;gap:12px" id="dahab">
   <h2>达哈卜能玩啥 <small>小红书 20 篇游记 + 网上报价整理，2025–26 参考价，现场能砍 · 1 元 ≈ 7.5 埃镑，1 美元 ≈ 53.5 埃镑（11 月中）</small></h2>
   <div class="pick">
-    <div><b>必选：</b>岸边浮潜（灯塔 + 鳗鱼花园）、自己去蓝洞、贝都因篝火晚会、观景台看日落</div>
-    <div><b>二选一：</b>体验潜水 或 风筝冲浪 · <b>挑战：</b>夜爬西奈山 · <b>轻松：</b>骑马 / ATV、攀岩、Abu Galum</div>
+    <div><b>已定要玩（排进行程了）：</b>蓝洞体验潜水、浮潜、野攀（顶绳 + 学先锋，两个上午）、骑马、ATV + Magic Lake、贝都因篝火、圣凯瑟琳修道院 + 西奈山日落、皮划艇 / SUP</div>
+    <div><b>没排进去（有空再说）：</b>风筝冲浪、彩色峡谷、Ras Abu Galum</div>
   </div>
   <div class="acts">
     <details open><summary>🐠 水里</summary><ul>
@@ -388,7 +388,7 @@ footer{font-size:.78rem;color:var(--muted)}
         <span class="n">傍晚划出去看日落；晚上风大流快，别离岸太远。</span></li>
     </ul></details>
     <details><summary>⛰️ 陆上</summary><ul>
-      <li><b>夜爬西奈山看日出</b> <span class="p">800–1250 埃镑</span>
+      <li><b>西奈山：我们去看日落</b>（11/30，先去圣凯瑟琳修道院）。私人车 + 向导要单独问价；下面是常见的夜爬日出团信息 <span class="p">日出团 800–1250 埃镑</span>
         <span class="n">晚 10 点接，凌晨开爬 3–4 小时，5 点多日出，上午回。<span class="w">12 月山顶零下</span>：羽绒服 + 冲锋衣 + 头灯 + 零食，毯子可租 100 埃镑。评价两极："值爆了" vs "最踩雷"。 <a class="go" data-q="Mount Sinai Egypt" target="_blank" rel="noopener">导航</a></span></li>
       <li><b>野外攀岩</b> <span class="p">$20–30</span>
         <span class="n">半天，含接送、装备、教练、水果，新手友好。详见下面「第一次野攀」。 <a class="go" data-q="Wadi Gnai Dahab" target="_blank" rel="noopener">导航</a></span></li>
@@ -441,8 +441,7 @@ footer{font-size:.78rem;color:var(--muted)}
 <section style="display:grid;gap:10px" id="qs">
   <h2>待讨论</h2>
   <ol class="qs">
-    <li>达哈卜是考 PADI Open Water（3–4 天），还是只做体验潜水和浮潜？西奈山（约 2,285 米）要排在潜水之前，或者最后一潜后至少隔 24 小时。</li>
-    <li>12/3 白天：彩色峡谷，还是在达哈卜海边放空？</li>
+    <li>12/1 蓝洞：4 个人里谁做体验潜水、谁浮潜？</li>
     <li>12/4 开罗一天要不要订个钟点房（day use），下夜车先洗澡寄行李？</li>
   </ol>
 </section>
@@ -502,45 +501,50 @@ const DAYS = [
    {t:"14:30", tz:"+02:00", what:"大埃及博物馆 GEM", note:"图坦卡蒙展厅、大阶梯；门票 1,830 埃镑（11/1 起），现场不卖，提前在 visit-gem.com 订时段票", place:"Grand Egyptian Museum", tag:"book"},
    {t:"18:30", tz:"+02:00", what:"晚饭，看金字塔夜景，早点睡", note:"第二天 05:30 就要出发去机场；请酒店准备早餐打包盒"}
  ]},
- {d:"2026-11-27", w:"周五", title:"飞沙姆沙伊赫，中午到达哈卜", where:"达哈卜", items:[
+ {d:"2026-11-27", w:"周五", title:"飞沙姆沙伊赫，中午到达哈卜，岸边浮潜", where:"达哈卜", items:[
    {t:"05:30", tz:"+02:00", what:"退房，打车去开罗机场 T1", note:"清晨不堵车约 50–60 分钟；国内航班提前 1.5 小时到；是 T1 不是 T3（落地那天走的是 T3）", place:"Cairo International Airport Terminal 1"},
    {t:"08:00", tz:"+02:00", what:"Nile Air NP051 开罗 T1 → 沙姆 T2", note:"已出票，4 人共 ¥1,224；飞 1 小时，09:00 到；无餐食，托运额看携程订单", tag:"fly", ev:true},
    {t:"09:00", tz:"+02:00", what:"沙姆落地，提前约好的 6–7 座车接机", note:"整车约 1,500–1,700 埃镑，4 人 + 8 件大行李；检查站护照交给司机登记", tag:"book", place:"Sharm El Sheikh International Airport"},
    {t:"10:45", tz:"+02:00", what:"到达哈卜住处，放行李", note:"太早入住不了就先寄存行李"},
    {t:"12:00", tz:"+02:00", what:"海边午饭", place:"Lighthouse Dahab"},
-   {t:"14:00", tz:"+02:00", what:"灯塔点浮潜试水", note:"主街大店租面镜脚蹼救生衣约 150 埃镑", place:"Lighthouse Reef Dahab"},
-   {t:"16:30", tz:"+02:00", what:"海边看晚霞", note:"16:45 左右日落；达哈卜面朝东，太阳落在身后的山里，海面和对岸沙特的山会变成粉紫色"}
+   {t:"14:00", tz:"+02:00", what:"浮潜：灯塔点", note:"岸边下水就有珊瑚；主街大店租面镜脚蹼救生衣约 150 埃镑/天，带潜水袜或沙滩鞋", place:"Lighthouse Reef Dahab"},
+   {t:"16:00", tz:"+02:00", what:"爬观景台看日落", note:"16:40 左右日落，太阳落在身后的山里，海面和对岸沙特的山变成粉紫色", place:"Footpath to Viewpoint Dahab"},
+   {t:"19:00", tz:"+02:00", what:"晚饭顺路订活动", note:"约好：攀岩向导（11/28、12/2 上午）、西奈山私人车+向导（11/30）、ATV 日落团（11/29）、蓝洞体验潜水（12/1）", tag:"book"}
  ]},
- {d:"2026-11-28", w:"周六", title:"达哈卜第二天：鳗鱼花园 + 订活动", where:"达哈卜", items:[
-   {t:"09:00", tz:"+02:00", what:"睡到自然醒，海边早饭"},
-   {t:"10:00", tz:"+02:00", what:"鳗鱼花园浮潜", note:"白沙地上的花园鳗，离岸不远", place:"Eel Garden Dahab"},
-   {t:"14:00", tz:"+02:00", what:"去潜水中心定后几天的潜水，订西奈山团", place:"Dahab dive centers"},
-   {t:"16:00", tz:"+02:00", what:"爬观景台看日落", note:"爬山不到 10 分钟，能看全镇和红海", place:"Dahab viewpoint"}
+ {d:"2026-11-28", w:"周六", title:"野攀第一课：顶绳 + 先锋入门", where:"达哈卜", items:[
+   {t:"07:30", tz:"+02:00", what:"野攀：Wadi Qnai 顶绳 + 先锋入门", note:"向导接送，半天；先在顶绳上熟悉岩面，再练挂快挂、带顶绳保护的模拟先锋、先锋保护和冲坠；不攀的人睡懒觉或去浮潜", place:"Wadi Gnai Dahab", tag:"book"},
+   {t:"12:30", tz:"+02:00", what:"回镇午饭，休息"},
+   {t:"14:30", tz:"+02:00", what:"浮潜：鳗鱼花园", note:"白沙地上的花园鳗，离岸不远", place:"Eel Garden Dahab"},
+   {t:"19:00", tz:"+02:00", what:"自由活动，早点睡"}
  ]},
- {d:"2026-11-29", w:"周日", title:"Ras Abu Galum，夜上西奈山", where:"达哈卜", items:[
-   {t:"09:00", tz:"+02:00", what:"Ras Abu Galum 保护区", note:"坐船或骑骆驼进去，Blue Lagoon 浮潜，贝都因午饭", place:"Ras Abu Galum Protectorate", tag:"book"},
-   {t:"16:00", tz:"+02:00", what:"回达哈卜，早点睡几小时"},
-   {t:"23:00", tz:"+02:00", what:"出发去西奈山", note:"车程约 2 小时；带厚外套、头灯，山顶接近 0°C", tag:"book", ev:true}
+ {d:"2026-11-29", w:"周日", title:"SUP + ATV 日落、Magic Lake、贝都因篝火", where:"达哈卜", items:[
+   {t:"08:30", tz:"+02:00", what:"皮划艇 / 桨板 SUP", note:"早上风小水平，200–300 埃镑/小时；别离岸太远", place:"Lighthouse Dahab"},
+   {t:"11:00", tz:"+02:00", what:"午饭，下午休息", note:"明天 07:00 出发去西奈山，今天别太累"},
+   {t:"14:30", tz:"+02:00", what:"ATV 日落团 + Magic Lake", note:"沙漠里骑 ATV，日落前后到 Magic Lake；订的时候问清楚是否经过 Magic Lake、含不含晚饭和篝火、头盔", tag:"book", place:"Magic Lake Dahab"},
+   {t:"18:00", tz:"+02:00", what:"贝都因篝火晚会 + 晚饭", note:"一般和 ATV 团打包；音乐、茶、看星星；约 200 埃镑（单独去含接送）；21:30 前回，明天早起", tag:"book"}
  ]},
- {d:"2026-11-30", w:"周一", title:"西奈山日出 + 圣凯瑟琳修道院", where:"达哈卜", items:[
-   {t:"02:00", tz:"+02:00", what:"开始登山", note:"约 3 小时，最后 750 级台阶", place:"Mount Sinai"},
-   {t:"06:15", tz:"+02:00", what:"山顶看日出", note:"约 06:15"},
-   {t:"09:00", tz:"+02:00", what:"圣凯瑟琳修道院", note:"官网写平日 08:45–12:45 开放、周日关门；2025 年曾因纠纷暂停对游客开放，报团时让向导确认能不能进", place:"Saint Catherine's Monastery", tag:"warn"},
-   {t:"13:00", tz:"+02:00", what:"回达哈卜，补觉"}
+ {d:"2026-11-30", w:"周一", title:"圣凯瑟琳修道院 + 西奈山看日落", where:"达哈卜", items:[
+   {t:"07:00", tz:"+02:00", what:"包车出发去圣凯瑟琳", note:"车程约 1.5–2 小时；达哈卜的团几乎都是夜爬看日出，看日落要约私人车 + 贝都因向导（上山必须有本地向导）", tag:"book"},
+   {t:"09:00", tz:"+02:00", what:"圣凯瑟琳修道院", note:"周一开放（周五、周日关门），大约 09:00–11:30/12:00，各处时间不一；2025 年曾暂停对游客开放，出发前让向导确认", place:"Saint Catherine's Monastery", tag:"warn"},
+   {t:"12:00", tz:"+02:00", what:"午饭，开始登山", note:"走骆驼道约 2.5–3 小时，最后 750 级台阶", place:"Mount Sinai"},
+   {t:"16:35", tz:"+02:00", what:"山顶看日落", note:"约 16:35；日落后很快变冷变黑，带羽绒服、头灯、手套"},
+   {t:"17:00", tz:"+02:00", what:"打头灯下山", note:"约 2 小时，走骆驼道别走台阶；约 21:00 回达哈卜", tag:"warn"}
  ]},
- {d:"2026-12-01", w:"周二", title:"潜水日 · 蓝洞", where:"达哈卜", items:[
-   {t:"08:30", tz:"+02:00", what:"蓝洞 & The Bells", note:"体验潜水或浮潜；蓝洞拱门只适合技术潜水，别去", place:"Blue Hole Dahab", tag:"book"},
-   {t:"14:00", tz:"+02:00", what:"峡谷点 The Canyon", place:"The Canyon dive site Dahab"},
+ {d:"2026-12-01", w:"周二", title:"蓝洞体验潜水", where:"达哈卜", items:[
+   {t:"08:30", tz:"+02:00", what:"蓝洞体验潜水", note:"潜店带去，教练 1 对 1/1 对 2，不用证，约 €25–40；不潜的人在蓝洞边浮潜；蓝洞拱门只适合技术潜水，别去；西奈山（高海拔）安排在潜水之前，没问题", place:"Blue Hole Dahab", tag:"book"},
+   {t:"13:00", tz:"+02:00", what:"蓝洞边午饭，下午浮潜 The Bells 或回镇休息", place:"Blue Hole Dahab"},
    {t:"19:00", tz:"+02:00", what:"Lighthouse 区海鲜晚饭"}
  ]},
- {d:"2026-12-02", w:"周三 · 阿联酋国庆", title:"潜水日 · 最后一潜", where:"达哈卜", items:[
-   {t:"09:00", tz:"+02:00", what:"Three Pools / 灯塔点潜水", place:"Three Pools Dahab"},
-   {t:"17:00", tz:"+02:00", what:"最后一潜结束", note:"潜水后 24 小时内不坐飞机、不上高海拔；离 12/4 晚上的航班隔了两天多", tag:"warn"},
+ {d:"2026-12-02", w:"周三 · 阿联酋国庆", title:"野攀第二课：先锋 + 海边骑马", where:"达哈卜", items:[
+   {t:"07:30", tz:"+02:00", what:"野攀：先锋", note:"在简单线路上真正先锋，向导在旁边看；状态好可以去 Camel Canyon；潜水后隔一天，不冲突", place:"Wadi Gnai Dahab", tag:"book"},
+   {t:"12:30", tz:"+02:00", what:"回镇午饭，休息"},
+   {t:"15:30", tz:"+02:00", what:"海边骑马看日落", note:"约 500 埃镑/小时，谈好时长和总价", tag:"book"},
    {t:"19:00", tz:"+02:00", what:"自由活动"}
  ]},
- {d:"2026-12-03", w:"周四", title:"彩色峡谷，夜车回开罗", where:"夜车上", items:[
-   {t:"08:00", tz:"+02:00", what:"可选：彩色峡谷", note:"半日游；或在海边放空", place:"Colored Canyon Sinai", tag:"book"},
+ {d:"2026-12-03", w:"周四", title:"最后一天：浮潜 / 划船，夜车回开罗", where:"夜车上", items:[
+   {t:"08:30", tz:"+02:00", what:"自由：再划一次 SUP，或去 Islands 浮潜", note:"Islands 珊瑚迷宫，生态最好", place:"Islands Dive Site Dahab"},
    {t:"12:00", tz:"+02:00", what:"退房，行李寄存"},
+   {t:"16:00", tz:"+02:00", what:"海边看最后一次日落，晚饭"},
    {t:"21:00", tz:"+02:00", what:"Go Bus 夜车 达哈卜 → 开罗", note:"Super Go D 680 埃镑/人，标称 10 小时，约 07:00 到解放广场。想舒服点：23:30 Elite（1000 埃镑），约 09:30 到", tag:"book", place:"Go Bus Dahab El Masbat", ev:true}
  ]},
  {d:"2026-12-04", w:"周五", title:"开罗老城一整天，深夜回阿布扎比", where:"红眼航班", items:[
@@ -565,9 +569,10 @@ const TODO = [
  ["giza","订吉萨酒店 1 晚（11/26），问能否早入住","尽快"],
  ["dahab","订达哈卜住宿 6 晚（11/27–12/3）","尽快"],
  ["dayroom","可选：12/4 开罗市中心钟点房",""],
- ["driver","达哈卜一日游包车（Ras Abu Galum、彩色峡谷）",""],
- ["dive","联系潜水中心：体验潜水还是考证",""],
- ["sinai","订西奈山日出团（11/29 晚出发）",""],
+ ["atv","订 11/29 ATV 日落团（问清楚去不去 Magic Lake、含不含贝都因篝火晚饭）",""],
+ ["climb","约攀岩向导 11/28 + 12/2 上午（顶绳 + 学先锋，提前说要学先锋）","尽快"],
+ ["dive","约 12/1 蓝洞体验潜水（4 人里谁潜、谁浮潜）",""],
+ ["sinai","约 11/30 西奈山日落：私人车 + 贝都因向导，07:00 出发先去修道院（团几乎都是夜爬日出，要单独问）","尽快"],
  ["gem","网上订大埃及博物馆 11/26 下午时段票（visit-gem.com，1,830 埃镑/人，现场不卖）","尽快"],
  ["ins","买旅行保险（含潜水）",""],
  ["cash","备美元现金，小费和签证用",""],
@@ -606,7 +611,7 @@ const TODO = [
   pin(C,'开罗','12/4 老城一天',10,-6); pin(G,'吉萨','住 1 晚',-10,8,'end');
   pin(S,'沙姆沙伊赫','11/27 落地转车',-10,16,'end');
   pin(D,'达哈卜','住 6 晚 ⭐',12,4,'start',true);
-  pin(K,'西奈山','日出',-10,-4,'end'); pin(A,'Ras Abu Galum','',-10,-8,'end');
+  pin(K,'西奈山','11/30 日落',-10,-4,'end');
   txt(W-12,36,'阿布扎比 ↗ 约 4 小时',{size:13,anchor:'end',fill:'var(--sand)'});
 })();
 
