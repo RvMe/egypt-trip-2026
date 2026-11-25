@@ -176,7 +176,8 @@ td.r small{display:block;font-family:var(--f-body);font-size:.72rem;font-weight:
       <li><b>当天怎么走</b>：T3 落地 → 打车约 10–15 分钟到公寓放行李（入住一般 14:00，提前问能否先寄存）→ 4 人空手打一辆 Uber 去金字塔、大埃及博物馆（单程约 1 小时）→ 晚饭后打车回来 → 11/27 <b>06:30</b> 出门去 <b>T1</b>（约 10–15 分钟）。</li>
       <li><b>WhatsApp 问公寓</b>：「4 adults + 8 large suitcases. Arrive Cairo Airport T3 26 Nov 07:10 (MS917). Can we leave luggage before check-in? Early departure to T1 on 27 Nov 06:30 — breakfast box possible? Airport transfer price per car?」接送机另收费，不用就叫 Uber XL 或两辆 Uber。</li>
     </ul></details>
-    <details><summary>🌊 达哈卜 · 11/27–12/3 六晚</summary><ul>
+    <details open><summary>🌊 达哈卜 · 11/27–12/3 六晚 <small>✅ 已订</small></summary><ul>
+      <li><b>Zuri Dahab Hotel</b> ✅ 已订 6 晚 <a class="go" data-q="Zuri Dahab Hotel" target="_blank" rel="noopener">导航</a>。订完用 WhatsApp 问：① 11/27 约 10:45 到，能否先寄存行李 ② 自来水是淡水还是咸水 ③ 12/3 退房后能否寄存到晚上（21:00 Go Bus）④ 能否代约沙姆机场接机、西奈山私人车、ATV。下面是当初的候选，留作备用：</li>
       <li><b>Gina Motel Dahab</b>（Masbat）· 小红书多人推荐、很多中国人住，<span class="p">约 ¥145/间/晚</span>（平台和前台价不同，可谈）；有厨房、海景天台、猫；无泳池无早餐；离海边步行 6–11 分钟；某平台 9.4（242 条） <a class="go" data-q="Gina Motel Dahab" target="_blank" rel="noopener">导航</a> <a class="go" data-bk="Gina Motel Dahab" target="_blank" rel="noopener">Booking</a></li>
       <li><b>Dahab Home</b>（离主街和潜店很近）· 小红书：单间<span class="p">约 ¥150/晚</span>，<b>淡水</b>、24 小时热水，有早餐，老板很热心，楼顶海景 <a class="go" data-q="Dahab Home Dahab" target="_blank" rel="noopener">导航</a> <a class="go" data-bk="Dahab Home" target="_blank" rel="noopener">Booking</a></li>
       <li><b>Dahab Divers</b>（Masbat / El Fanar 街，潜水度假酒店）· 有泳池、海边、含早餐；价格波动大（Kayak 显示 $62 起），要实时问价；8.9（203 条） <a class="go" data-q="Dahab Divers Hotel" target="_blank" rel="noopener">导航</a> <a class="go" data-bk="Dahab Divers" target="_blank" rel="noopener">Booking</a></li>
@@ -491,7 +492,7 @@ const DAYS = [
    {t:"06:30", tz:"+02:00", what:"退房，打车去开罗机场 T1", note:"约 10–15 分钟；国内航班提前 1.5 小时到；是 T1 不是 T3", place:"Cairo International Airport Terminal 1"},
    {t:"08:00", tz:"+02:00", what:"Nile Air NP051 开罗 T1 → 沙姆 T2", note:"已出票，4 人共 ¥1,224；飞 1 小时，09:00 到；无餐食，托运额看携程订单", tag:"fly", ev:true},
    {t:"09:00", tz:"+02:00", what:"沙姆落地，提前约好的 6–7 座车接机", note:"整车约 1,500–1,700 埃镑，4 人 + 8 件大行李；检查站护照交给司机登记", tag:"book", place:"Sharm El Sheikh International Airport"},
-   {t:"10:45", tz:"+02:00", what:"到达哈卜住处，放行李", note:"太早入住不了就先寄存行李"},
+   {t:"10:45", tz:"+02:00", what:"到 Zuri Dahab Hotel，放行李", note:"太早入住不了就先寄存行李", place:"Zuri Dahab Hotel"},
    {t:"12:00", tz:"+02:00", what:"海边午饭", place:"Lighthouse Dahab"},
    {t:"14:00", tz:"+02:00", what:"浮潜：灯塔点", note:"岸边下水就有珊瑚；主街大店租面镜脚蹼救生衣约 150 埃镑/天，带潜水袜或沙滩鞋", place:"Lighthouse Reef Dahab"},
    {t:"16:00", tz:"+02:00", what:"爬观景台看日落", note:"16:40 左右日落，太阳落在身后的山里，海面和对岸沙特的山变成粉紫色", place:"Footpath to Viewpoint Dahab"},
@@ -553,7 +554,7 @@ const TODO = [
  ["van","约 11/27 沙姆机场→达哈卜 6–7 座车（4 人 + 8 件大行李）","先办"],
  ["bus","订 Go Bus 12/3 21:00 达哈卜→开罗（4 张，go-bus.com）","先办"],
  ["giza","✅ 已订 11/26 FLAMINGO 公寓（机场附近）；WhatsApp 问寄存行李、打包早餐",""],
- ["dahab","订达哈卜住宿 6 晚（11/27–12/3）","尽快"],
+ ["dahab","✅ 已订达哈卜 Zuri Dahab Hotel 6 晚（11/27–12/3）",""],
  ["dayroom","可选：12/4 开罗市中心钟点房",""],
  ["atv","订 11/29 ATV 日落团（问清楚去不去 Magic Lake、含不含贝都因篝火晚饭）",""],
  ["climb","约攀岩向导 11/28 + 12/2 上午（顶绳 + 学先锋，提前说要学先锋）","尽快"],
